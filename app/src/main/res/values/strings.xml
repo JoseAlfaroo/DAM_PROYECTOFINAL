@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Nombre provisional</string>
+    <string name="app_name">Sushi Club</string>
     <string name="EmailLabel">Ingrese su correo</string>
     <string name="PasswordLabel">Ingrese su contraseña</string>
     <string name="NameLabel">Nombres</string>
