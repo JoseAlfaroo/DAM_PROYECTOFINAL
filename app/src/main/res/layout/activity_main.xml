@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/peach"
+    android:background="@drawable/fondologin"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -22,42 +22,21 @@
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="1dp">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/zcool_qingke_huangyou"
-                android:text="SUSHI CLUB"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="@color/darkblue"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="165dp"
-                android:layout_height="160dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="25dp"
-                android:src="@drawable/sushi"
-                app:srcCompat="@drawable/sushi" />
-
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/EmailLabel"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginTop="330dp"/>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxBackgroundColor="@color/wintermelon"
+                app:boxBackgroundColor="@color/white"
                 app:boxStrokeColor="@color/darkblue"
                 android:hint="@string/EmailLabel"
                 app:startIconDrawable="@drawable/email">
@@ -84,7 +63,7 @@
                 android:id="@+id/textField2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxBackgroundColor="@color/wintermelon"
+                app:boxBackgroundColor="@color/white"
                 app:boxStrokeColor="@color/darkblue"
                 android:hint="@string/PasswordLabel"
                 app:startIconDrawable="@drawable/lock">
@@ -103,7 +82,7 @@
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/orange"
+                android:backgroundTint="@color/blue"
                 android:fontFamily="sans-serif"
                 android:text="@string/LoginButtonLabel"
                 android:textColor="@color/white"
@@ -123,7 +102,7 @@
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/darkblue"
+                android:backgroundTint="@color/purple"
                 android:fontFamily="sans-serif"
                 android:text="@string/RegisterButtonLabel"
                 android:textColor="@color/white"

@@ -16,9 +16,7 @@ class RegisterActivity : AppCompatActivity() {
     //Elementos
     private lateinit var txtName: TextInputEditText
     private lateinit var txtLastName: TextInputEditText
-    private lateinit var txtAddress: TextInputEditText
-    private lateinit var txtPhone: TextInputEditText
-    private lateinit var txtEmail: TextInputEditText
+    private lateinit var txtUsername: TextInputEditText
     private lateinit var txtPassword: TextInputEditText
     private lateinit var txtConfirmPassword: TextInputEditText
     private lateinit var RegisterButton: Button
@@ -37,9 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         //Referencias (No voy a repetir eso)
         txtName = findViewById(R.id.txtName)
         txtLastName = findViewById(R.id.txtLastName)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtPhone = findViewById(R.id.txtPhone)
-        txtEmail = findViewById(R.id.txtEmail)
+        txtUsername = findViewById(R.id.txtUsername)
         txtPassword = findViewById(R.id.txtPassword)
         txtConfirmPassword = findViewById(R.id.txtConfirmPassword)
         RegisterButton = findViewById(R.id.RegisterButton)

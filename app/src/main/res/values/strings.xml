@@ -1,13 +1,18 @@
 <resources>
-    <string name="app_name">Sushi Club</string>
+    <string name="app_name">The Librarian Cat</string>
     <string name="EmailLabel">Ingrese su correo</string>
     <string name="PasswordLabel">Ingrese su contraseña</string>
     <string name="NameLabel">Nombres</string>
     <string name="LastNameLabel">Apellidos</string>
-    <string name="PhoneLabel">Número de teléfono</string>
     <string name="ConfirmPasswordLabel">Confirmar contraseña</string>
-    <string name="AddressLabel">Ingrese su dirección</string>
+    <string name="UsernameLabel">Nombre de Usuario</string>
+    <string name="UsernameLabel2">Ingrese su Nombre de Usuario</string>
     <string name="LoginButtonLabel">Iniciar sesión</string>
     <string name="LoginInsteadButtonLabel"><u>¿Ya tienes una cuenta? Inicia sesión</u></string>
     <string name="RegisterButtonLabel">Registrarse</string>
+    <string name="HomeLabel">Home</string>
+    <string name="BookLabel">Libros</string>
+    <string name="AutorLabel">Autores</string>
+    <string name="PrestamoLabel">Préstamos</string>
+    <string name="PerfilLabel">Perfil</string>
 </resources>
