@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@color/bonewhite"
-    android:id="@+id/autor">
+    android:id="@+id/autor_register">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,61 +47,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal"
-            android:padding="1dp">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField1"
-                style="?attr/textInputOutlinedStyle"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:hint="@string/AutorHint"
-                app:endIconMode="clear_text">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtBuscarAutor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <ImageView
-                android:id="@+id/btnBuscarAutor"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="20dp"
-                app:srcCompat="@drawable/search" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btnNuevoAutor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:backgroundTint="@color/purple"
-            android:fontFamily="@font/zcool_qingke_huangyou"
-            android:text="Agregar un Nuevo Autor"
-            android:textAlignment="center"
-            android:textColor="@color/bonewhite"
-            android:textSize="22sp"
-            app:icon="@drawable/new_circle" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/zcool_qingke_huangyou"
-            android:padding="8dp"
-            android:text="Autores"
-            android:textSize="34sp" />
     </LinearLayout>
 
 
@@ -109,7 +54,7 @@
         android:id="@+id/sw_home"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="285dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintBottom_toTopOf="@id/menu_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,13 +63,48 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="30dp">
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvAutor"
+            <TextView
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="150dp"
+                android:fontFamily="@font/zcool_qingke_huangyou"
+                android:text="Nombre del Autor"
+                android:textSize="30sp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/autor_icon">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNombreRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnRegisterAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Guardar"
+                android:textSize="20dp"
+                android:fontFamily="@font/zcool_qingke_huangyou"
+                android:backgroundTint="@color/purple"
+                app:icon="@drawable/save"
+                />
+
+
 
         </LinearLayout>
     </ScrollView>

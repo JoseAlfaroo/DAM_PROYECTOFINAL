@@ -1,25 +1,22 @@
 package com.argus.proyectofinaldami
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.argus.proyectofinaldami.adaptador.AutorAdapter
 import com.argus.proyectofinaldami.controller.AutorController
+import com.argus.proyectofinaldami.entidad.Autor
 import com.google.android.material.textfield.TextInputEditText
 
-class AutorActivity:AppCompatActivity() {
-    private lateinit var rvAutor:RecyclerView
-    private lateinit var txtBuscarAutor:TextInputEditText
-    private lateinit var btnBuscarAutor:ImageView
-    private lateinit var btnNuevoAutor:Button
+class AutorRegisterActivity:AppCompatActivity() {
+    private lateinit var txtNombreAutorRegister:TextInputEditText
+    private lateinit var btnRegisterAutor:Button
     private lateinit var btnHome: LinearLayout
     private lateinit var btnLibro: LinearLayout
     private lateinit var btnAutor: LinearLayout
@@ -29,23 +26,15 @@ class AutorActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_autor)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.autor)) { v, insets ->
+        setContentView(R.layout.activity_register_autor)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.autor_register)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        rvAutor=findViewById(R.id.rvAutor)
-        var data=AutorController().findAll()
-        var adaptador=AutorAdapter(data)
-        rvAutor.adapter=adaptador
-        rvAutor.layoutManager= LinearLayoutManager(this)
-
-
-        txtBuscarAutor=findViewById(R.id.txtBuscarAutor)
-        btnBuscarAutor=findViewById(R.id.btnBuscarAutor)
-        btnNuevoAutor=findViewById(R.id.btnNuevoAutor)
-
+        txtNombreAutorRegister=findViewById(R.id.txtNombreRegister)
+        btnRegisterAutor=findViewById(R.id.btnRegisterAutor)
+        btnRegisterAutor.setOnClickListener { register_autor() }
 
         btnHome=findViewById(R.id.btnHomeMenu)
         btnLibro=findViewById(R.id.btnLibroMenu)
@@ -57,26 +46,33 @@ class AutorActivity:AppCompatActivity() {
         btnAutor.setOnClickListener { irautor() }
         btnPrestamo.setOnClickListener { irprestamo() }
         btnPerfil.setOnClickListener { irperfil() }
-        btnBuscarAutor.setOnClickListener { buscarautor() }
-        btnNuevoAutor.setOnClickListener { nuevoautor() }
     }
+    fun register_autor(){
+        var nom=txtNombreAutorRegister.text.toString()
 
-    fun buscarautor(){
-        val query = txtBuscarAutor.text.toString()
-        val data = if (query.isEmpty()) {
-            AutorController().findAll()
-        } else {
-            AutorController().findByName(query)
+        if (nom.isEmpty()){
+            showAlert("El campo Nombre del Autor es obligatorio")
+            return
         }
-        val adaptador = AutorAdapter(data)
-        rvAutor.adapter = adaptador
-        rvAutor.layoutManager = LinearLayoutManager(this)
 
+        var bean=Autor(0,nom)
+        var salida=AutorController().save(bean)
+        if(salida>0) {
+            showAlert("Autor Registrado", DialogInterface.OnClickListener { dialog, which ->
+                irautor()
+            })
+        }
+        else
+            showAlert("Error en el registro de un Autor")
     }
 
-    fun nuevoautor(){
-        var intent= Intent(this,AutorRegisterActivity::class.java)
-        startActivity(intent)
+    fun showAlert(men:String, listener: DialogInterface.OnClickListener? = null){
+        val builder= AlertDialog.Builder(this)
+        builder.setTitle("App The Librarian Cat")
+        builder.setMessage(men)
+        builder.setPositiveButton("Aceptar",listener)
+        val dialog: AlertDialog =builder.create()
+        dialog.show()
     }
 
     fun irhome(){
@@ -101,5 +97,4 @@ class AutorActivity:AppCompatActivity() {
         //var intent=Intent(this,PerfilActivity::class.java)
         startActivity(intent)
     }
-
 }
