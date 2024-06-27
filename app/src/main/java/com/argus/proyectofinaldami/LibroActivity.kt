@@ -8,18 +8,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class HomeActivity:AppCompatActivity() {
-    private lateinit var btnHome:LinearLayout
-    private lateinit var btnLibro:LinearLayout
+class LibroActivity:AppCompatActivity() {
+    private lateinit var btnHome: LinearLayout
+    private lateinit var btnLibro: LinearLayout
     private lateinit var btnAutor:LinearLayout
     private lateinit var btnPrestamo:LinearLayout
     private lateinit var btnPerfil:LinearLayout
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_home)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.home)) { v, insets ->
+        setContentView(R.layout.activity_libro)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.libro)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -35,14 +34,13 @@ class HomeActivity:AppCompatActivity() {
         btnPrestamo.setOnClickListener { irprestamo() }
         btnPerfil.setOnClickListener { irperfil() }
     }
-
     fun irhome(){
-        var intent=Intent(this,HomeActivity::class.java)
+        var intent= Intent(this,HomeActivity::class.java)
         startActivity(intent)
     }
 
     fun irlibro(){
-        var intent=Intent(this,LibroActivity::class.java)
+        var intent= Intent(this,LibroActivity::class.java)
         startActivity(intent)
     }
     fun irautor(){
@@ -58,6 +56,4 @@ class HomeActivity:AppCompatActivity() {
         //var intent=Intent(this,PerfilActivity::class.java)
         startActivity(intent)
     }
-
-
 }
