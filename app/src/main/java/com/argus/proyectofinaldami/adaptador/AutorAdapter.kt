@@ -26,7 +26,6 @@ class AutorAdapter(var lista:ArrayList<Autor>):RecyclerView.Adapter<ViewAutor>()
 
         holder.itemView.setOnClickListener{
             var intent=Intent(appConfig.CONTEXTO,AutorUpdateActivity::class.java)
-            //asignar clave
             intent.putExtra("codigo_autor",lista.get(position).codigo_autor)
 
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)

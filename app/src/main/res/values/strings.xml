@@ -18,6 +18,6 @@
     <string name="AutorLabel">Autores</string>
     <string name="PrestamoLabel">Préstamos</string>
     <string name="PerfilLabel">Perfil</string>
-    <string name="LibroHint">Buscar un Libro</string>
+    <string name="LibroHint">Buscar un Libro por Título o Autor</string>
     <string name="AutorHint">Buscar un Autor</string>
 </resources>

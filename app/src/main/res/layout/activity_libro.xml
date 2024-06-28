@@ -2,65 +2,127 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@color/bonewhite"
     android:id="@+id/libro">
 
     <LinearLayout
-        android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/blue"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@drawable/logobanner" />
+        <LinearLayout
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/blue"
+            android:orientation="horizontal"
+            android:padding="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:padding="5dp"
+                android:src="@drawable/logobanner"
+                tools:srcCompat="@drawable/logobanner" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/zcool_qingke_huangyou"
+                android:text="The Librarian Cat"
+                android:textAlignment="center"
+                android:textColor="@color/bonewhite"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:padding="1dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField1"
+                style="?attr/textInputOutlinedStyle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/LibroHint"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtBuscarLibro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/btnBuscarLibro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp"
+                app:srcCompat="@drawable/search" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnNuevoLibro"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/purple"
             android:fontFamily="@font/zcool_qingke_huangyou"
-            android:text="The Librarian Cat"
+            android:text="Agregar un Nuevo Libro"
             android:textAlignment="center"
             android:textColor="@color/bonewhite"
-            android:textSize="48sp" />
+            android:textSize="22sp"
+            app:icon="@drawable/new_circle" />
 
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/zcool_qingke_huangyou"
+            android:padding="8dp"
+            android:text="Libros"
+            android:textSize="34sp" />
     </LinearLayout>
+
 
     <ScrollView
         android:id="@+id/sw_home"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="80dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="285dp"
+        app:layout_constraintBottom_toTopOf="@id/menu_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/zcool_qingke_huangyou"
-                android:padding="10dp"
-                android:text="Libros"
-                android:textSize="34sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvLibroMenu"
+                android:id="@+id/rvLibro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -68,18 +130,20 @@
     </ScrollView>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/menu_home"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:layout_constraintBottom_toBottomOf="@+id/sw_home"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bar_menu_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:backgroundTint="@color/blue"/>
+            android:backgroundTint="@color/blue"
+            android:gravity="bottom" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,8 +170,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/zcool_qingke_huangyou"
                     android:text="Home"
-                    android:textColor="@color/bonewhite"
                     android:textAlignment="center"
+                    android:textColor="@color/bonewhite"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -132,8 +196,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/zcool_qingke_huangyou"
                     android:text="Libro"
-                    android:textColor="@color/bonewhite"
                     android:textAlignment="center"
+                    android:textColor="@color/bonewhite"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -156,10 +220,10 @@
                     android:id="@+id/txtView97"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/bonewhite"
                     android:fontFamily="@font/zcool_qingke_huangyou"
                     android:text="Autor"
                     android:textAlignment="center"
+                    android:textColor="@color/bonewhite"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -181,11 +245,11 @@
                 <TextView
                     android:id="@+id/txtView96"
                     android:layout_width="match_parent"
-                    android:textColor="@color/bonewhite"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/zcool_qingke_huangyou"
                     android:text="Prestamo"
                     android:textAlignment="center"
+                    android:textColor="@color/bonewhite"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -198,27 +262,28 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageView5"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     app:srcCompat="@drawable/perfil" />
 
                 <TextView
                     android:id="@+id/txtView95"
                     android:layout_width="match_parent"
-                    android:textColor="@color/bonewhite"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Perfil"
                     android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:textAlignment="center"/>
+                    android:text="Perfil"
+                    android:textAlignment="center"
+                    android:textColor="@color/bonewhite"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
 
 
