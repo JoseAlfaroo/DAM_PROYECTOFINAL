@@ -82,7 +82,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        Toast.makeText(this, "Probando botón iniciar sesión", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
     }
 
     private fun register() {
