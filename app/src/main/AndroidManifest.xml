@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".utils.appConfig"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,63 +14,69 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoFinalDAMI"
-        tools:targetApi="31"
-        android:name=".utils.appConfig">
+        tools:targetApi="31">
+        <activity
+            android:name=".FBSuccessActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
 
         <activity
-            android:windowSoftInputMode="adjustPan"
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".HomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".LibroActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".AutorActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".AutorRegisterActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".AutorUpdateActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -75,9 +84,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".RegisterActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+
         </activity>
 
         <meta-data

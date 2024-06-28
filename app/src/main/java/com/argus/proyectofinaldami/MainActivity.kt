@@ -9,7 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
 import com.google.android.material.textfield.TextInputEditText
+import java.util.Arrays
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,11 +27,32 @@ class MainActivity : AppCompatActivity() {
     private lateinit var LoginButton:Button
     private lateinit var RegisterButton:Button
 
+    private lateinit var FBLoginBtn:LoginButton
+    private lateinit var callbackManager : CallbackManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        callbackManager = CallbackManager.Factory.create()
+
+        val facebookCallback = object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                val accessToken = loginResult.accessToken
+                // Manejar el éxito del inicio de sesión aquí
+            }
+
+            override fun onCancel() {
+                // Manejar cancelación del inicio de sesión aquí
+            }
+
+            override fun onError(exception: FacebookException) {
+                // Manejar errores aquí
+            }
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -35,10 +64,21 @@ class MainActivity : AppCompatActivity() {
         txtPassword = findViewById(R.id.txtPassword)
         LoginButton = findViewById(R.id.LoginButton)
         RegisterButton = findViewById(R.id.RegisterButton)
+        FBLoginBtn = findViewById(R.id.FBloginBtn)
 
         LoginButton.setOnClickListener{ login() }
         RegisterButton.setOnClickListener{ register() }
+        FBLoginBtn.setOnClickListener{ fblogin() }
 
+    }
+
+    private fun fblogin() {
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun login() {

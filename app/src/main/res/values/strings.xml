@@ -1,4 +1,7 @@
 <resources>
+    <string name="facebook_app_id">1159387085370302</string>
+    <string name="fb_login_protocol_scheme">fb1159387085370302</string>
+    <string name="facebook_client_token">8b7b12ba9a146c1563472da052547e87</string>
     <string name="app_name">The Librarian Cat</string>
     <string name="EmailLabel">Ingrese su correo</string>
     <string name="PasswordLabel">Ingrese su contraseña</string>
