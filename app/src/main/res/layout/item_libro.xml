@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Código"
             android:fontFamily="@font/zcool_qingke_huangyou"
-            android:textSize="25sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             android:textAlignment="center"/>
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:fontFamily="@font/zcool_qingke_huangyou"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
 
     <LinearLayout
@@ -50,13 +50,13 @@
                 android:layout_height="wrap_content"
                 android:hint="Titulo"
                 android:fontFamily="@font/zcool_qingke_huangyou"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textAlignment="center"/>
 
             <ImageView
                 android:id="@+id/imgLibroItem"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 tools:srcCompat="@tools:sample/avatars" />
         </LinearLayout>
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="Autor"
                 android:fontFamily="@font/zcool_qingke_huangyou"
-                android:textSize="25sp"
+                android:textSize="23sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/zcool_qingke_huangyou"
-                android:textSize="30sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text="Género"
                 android:fontFamily="@font/zcool_qingke_huangyou"
-                android:textSize="25sp"
+                android:textSize="23sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/zcool_qingke_huangyou"
-                android:textSize="30sp"/>
+                android:textSize="20sp"/>
         </LinearLayout>
 
     </LinearLayout>

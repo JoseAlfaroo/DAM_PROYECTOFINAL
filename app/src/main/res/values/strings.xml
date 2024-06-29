@@ -20,4 +20,25 @@
     <string name="PerfilLabel">Perfil</string>
     <string name="LibroHint">Buscar un Libro por Título o Autor</string>
     <string name="AutorHint">Buscar un Autor</string>
+    <string name="SpinnerAutorHint">Seleccione un Autor</string>
+    <string name="GeneroHint">Seleccione un Género</string>
+    <array name="genre">
+        <item>Ficción</item>
+        <item>Romance</item>
+        <item>Misterio</item>
+        <item>Ciencia Ficción</item>
+        <item>Fantasía</item>
+        <item>Biografía</item>
+        <item>Historia</item>
+        <item>Autoayuda</item>
+        <item>Aventura</item>
+        <item>Terror</item>
+        <item>Thriller</item>
+        <item>Novela Gráfica</item>
+        <item>Poesía</item>
+        <item>Drama</item>
+        <item>Comedia</item>
+        <item>Ensayo</item>
+        <item>Crimen</item>
+    </array>
 </resources>

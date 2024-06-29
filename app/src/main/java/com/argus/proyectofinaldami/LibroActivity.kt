@@ -115,7 +115,8 @@ class LibroActivity:AppCompatActivity() {
     }
 
     fun nuevoautor(){
-
+        var intent= Intent(this,LibroRegisterActivity::class.java)
+        startActivity(intent)
     }
 
     fun showAlert(men:String, listener: DialogInterface.OnClickListener? = null){
