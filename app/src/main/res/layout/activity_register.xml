@@ -85,31 +85,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/UsernameLabel"
-                android:textStyle="bold" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/darkblue"
-                android:hint="@string/UsernameLabel2"
-                app:startIconDrawable="@drawable/user">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:inputType="text" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -148,6 +123,7 @@
                 app:boxBackgroundColor="@color/white"
                 app:boxStrokeColor="@color/darkblue"
                 android:hint="@string/PasswordLabel"
+                app:passwordToggleEnabled="true"
                 app:startIconDrawable="@drawable/lock">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -174,6 +150,7 @@
                 app:boxBackgroundColor="@color/white"
                 app:boxStrokeColor="@color/darkblue"
                 android:hint="@string/ConfirmPasswordLabel"
+                app:passwordToggleEnabled="true"
                 app:startIconDrawable="@drawable/lock">
 
                 <com.google.android.material.textfield.TextInputEditText

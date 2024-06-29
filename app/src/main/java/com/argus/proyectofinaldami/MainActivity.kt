@@ -1,31 +1,27 @@
 package com.argus.proyectofinaldami
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
 import com.argus.proyectofinaldami.entidad.User
+import com.argus.proyectofinaldami.entidad.UserLogin
 import com.argus.proyectofinaldami.services.ApiServiceUser
 import com.argus.proyectofinaldami.utils.ApiUtils
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
-import com.facebook.FacebookSdk
 import com.facebook.GraphRequest
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.coroutines.launch
 import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
@@ -135,6 +131,7 @@ class MainActivity : AppCompatActivity() {
 
                     Log.d("USUARIO", "Usuario encontrado: ${user!!.userID}")
 
+
                 } else {
                     Log.d("USUARIO", "Usuario no encontrado")
                 }
@@ -154,6 +151,7 @@ class MainActivity : AppCompatActivity() {
                     val user = response.body()
 
                     Log.d("USUARIO-FB", "Usuario encontrado: ${user!!.userID}")
+                    Toast.makeText(this@MainActivity, "Inicio exitoso", Toast.LENGTH_SHORT).show()
 
                 } else {
                     Log.d("USUARIO-FB", "Usuario no encontrado")
@@ -174,7 +172,7 @@ class MainActivity : AppCompatActivity() {
             nombres = nom,
             apellidos = ape,
             email = email,
-            password = "-"
+            password = null
         )
 
         val call = apiUser.register(user)
@@ -182,6 +180,16 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
                     Log.d("USUARIO-FB", "Usuario registrado")
+
+                    verificarExistenciaUser(email)
+
+
+                    Toast.makeText(this@MainActivity, "Inicio exitoso", Toast.LENGTH_SHORT).show()
+
+                    //Mandar a Home al final
+                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    startActivity(intent)
+
 
                 } else {
                     Log.d("USUARIO-FB", "Registro fallido")
@@ -206,8 +214,50 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
+
+        if(txtEmail.text.toString().isEmpty()) {
+            return Toast.makeText(this, "Ingrese su correo electrónico", Toast.LENGTH_SHORT).show()
+        }
+
+        if(txtPassword.text.toString().isEmpty()) {
+            return Toast.makeText(this, "Ingrese su contraseña", Toast.LENGTH_SHORT).show()
+        }
+
+        Log.d("USUARIO-LOGIN", "Datos validados")
+
+        val credentials = UserLogin(
+            email = txtEmail.text.toString(),
+            password = txtPassword.text.toString()
+        )
+
+        val call = apiUser.login(credentials)
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    //Exito
+                    val user = response.body()
+
+                    verificarExistenciaUser(txtEmail.text.toString())
+
+
+                    Toast.makeText(this@MainActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    startActivity(intent)
+
+                } else {
+                    Log.d("USUARIO-LOGIN", "Usuario no encontrado")
+                    Toast.makeText(this@MainActivity, "Verifique sus credenciales e intente nuevamente.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Log.d("USUARIO-LOGIN", "Error de inicio de sesión")
+                Toast.makeText(this@MainActivity, "Verifique sus credenciales e intente nuevamente.", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
     }
 
     private fun register() {
