@@ -80,7 +80,6 @@ class LibroActivity:AppCompatActivity() {
 
                 }
             }
-
             override fun onFailure(call: Call<List<Libro>>, t: Throwable) {
                 showAlert(t.localizedMessage)
 
