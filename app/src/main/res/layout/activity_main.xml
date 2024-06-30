@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondologin"
+    android:background="@drawable/mainbg"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -23,13 +23,28 @@
             tools:layout_editor_absoluteY="1dp">
 
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="145dp"
+                android:contentDescription="Logo"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
+                android:fontFamily="@font/zcool_qingke_huangyou"
+                android:text="@string/app_name"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/EmailLabel"
-                android:textStyle="bold"
-                android:layout_marginTop="330dp"/>
+                android:textStyle="bold"/>
 
 
             <com.google.android.material.textfield.TextInputLayout
