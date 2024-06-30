@@ -1,6 +1,8 @@
 package com.argus.proyectofinaldami.adaptador
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -26,6 +28,12 @@ class LibroAdapter(var lista:List<Libro>):RecyclerView.Adapter<ViewLibro>() {
         holder.tvTituloLibro.setText(lista.get(position).titulo)
         holder.tvAutorLibro.setText(lista.get(position).autor)
         holder.tvGeneroLibro.setText(lista.get(position).genero)
+
+        val decodedString = Base64.decode(lista.get(position).imagen, Base64.DEFAULT)
+        val byteArray = decodedString
+        val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+
+        holder.imgLibroItem.setImageBitmap(bitmap)
 
 
         holder.itemView.setOnClickListener{

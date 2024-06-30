@@ -45,6 +45,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     implementation("com.facebook.android:facebook-android-sdk:latest.release")
 
     implementation("com.squareup.retrofit2:retrofit:2.5.0")

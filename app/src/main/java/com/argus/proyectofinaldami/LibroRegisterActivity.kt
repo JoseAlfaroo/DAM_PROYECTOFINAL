@@ -2,12 +2,18 @@ package com.argus.proyectofinaldami
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Base64
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,13 +27,15 @@ import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayOutputStream
 
 class LibroRegisterActivity:AppCompatActivity() {
     private lateinit var txtTituloLibroRegister:TextInputEditText
     private lateinit var spnAutorLibroRegister: AutoCompleteTextView
     private lateinit var spnGeneroLibroRegister: AutoCompleteTextView
     private lateinit var txtDescripcionLibroRegister:TextInputEditText
-    private lateinit var txtImagenLibroRegister:TextInputEditText
+    private lateinit var btnSeleccionarPortadaRegister:Button
+    private lateinit var imgPortadaRegister:ImageView
     private lateinit var btnRegisterLibro:Button
 
     private lateinit var btnHome: LinearLayout
@@ -50,13 +58,21 @@ class LibroRegisterActivity:AppCompatActivity() {
         spnAutorLibroRegister=findViewById(R.id.spnAutorLibroRegister)
         spnGeneroLibroRegister=findViewById(R.id.spnGeneroLibroRegister)
         txtDescripcionLibroRegister=findViewById(R.id.txtDescripcionLibroRegister)
-        txtImagenLibroRegister=findViewById(R.id.txtImagenLibroRegister)
+        btnSeleccionarPortadaRegister=findViewById(R.id.btnSeleccionarPortadaRegister)
+        imgPortadaRegister=findViewById(R.id.imgPortadaRegister)
 
         btnRegisterLibro=findViewById(R.id.btnRegisterLibro)
         btnRegisterLibro.setOnClickListener { register_libro() }
         cargarautores()
 
         apiLibro=ApiUtils.getAPIServiceTLC()
+
+        val galleryImage=registerForActivityResult( ActivityResultContracts.GetContent(),
+            ActivityResultCallback {
+                imgPortadaRegister.setImageURI(it)
+            })
+
+        btnSeleccionarPortadaRegister.setOnClickListener { galleryImage.launch("image/*") }
 
         btnHome=findViewById(R.id.btnHomeMenu)
         btnLibro=findViewById(R.id.btnLibroMenu)
@@ -78,11 +94,16 @@ class LibroRegisterActivity:AppCompatActivity() {
         spnAutorLibroRegister.setAdapter(adapter)
     }
     fun register_libro(){
+        val bitmap = (imgPortadaRegister.drawable as BitmapDrawable).bitmap
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+
         var tit=txtTituloLibroRegister.text.toString()
         var aut=spnAutorLibroRegister.text.toString()
         var gen=spnGeneroLibroRegister.text.toString()
         var des=txtDescripcionLibroRegister.text.toString()
-        var img=txtImagenLibroRegister.text.toString()
+        var img= Base64.encodeToString(byteArray, Base64.DEFAULT)
         var bean=Libro(0,tit,aut,gen,des,img)
         apiLibro.saveLibro(bean).enqueue(object: Callback<Libro>{
             override fun onResponse(call: Call<Libro>, response: Response<Libro>) {

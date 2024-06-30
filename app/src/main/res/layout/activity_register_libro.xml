@@ -180,22 +180,24 @@
                 android:text="Portada"
                 android:textSize="30sp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField5"
+            <Button
+                android:id="@+id/btnSeleccionarPortadaRegister"
                 android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/zcool_qingke_huangyou"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/autor_icon">
+                android:text="Selecciona una Imágen"
+                android:backgroundTint="@color/darkblue"
+                app:icon="@drawable/image"
+                />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtImagenLibroRegister"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/imgPortadaRegister"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                tools:srcCompat="@tools:sample/avatars"/>
 
             <Button
                 android:id="@+id/btnRegisterLibro"

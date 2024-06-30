@@ -2,12 +2,19 @@ package com.argus.proyectofinaldami
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Base64
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,6 +28,7 @@ import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayOutputStream
 
 class LibroUpdateActivity:AppCompatActivity() {
 
@@ -29,7 +37,8 @@ class LibroUpdateActivity:AppCompatActivity() {
     private lateinit var spnAutorLibroUpdate: AutoCompleteTextView
     private lateinit var spnGeneroLibroUpdate: AutoCompleteTextView
     private lateinit var txtDescripcionLibroUpdate:TextInputEditText
-    private lateinit var txtImagenLibroUpdate:TextInputEditText
+    private lateinit var btnSeleccionarPortadaUpdate:Button
+    private lateinit var imgPortadaUpdate: ImageView
     private lateinit var btnUpdateLibro:Button
     private lateinit var btnDeleteLibro:Button
 
@@ -54,7 +63,8 @@ class LibroUpdateActivity:AppCompatActivity() {
         spnAutorLibroUpdate=findViewById(R.id.spnAutorLibroUpdate)
         spnGeneroLibroUpdate=findViewById(R.id.spnGeneroLibroUpdate)
         txtDescripcionLibroUpdate=findViewById(R.id.txtDescripcionLibroUpdate)
-        txtImagenLibroUpdate=findViewById(R.id.txtImagenLibroUpdate)
+        btnSeleccionarPortadaUpdate=findViewById(R.id.btnSeleccionarPortadaUpdate)
+        imgPortadaUpdate=findViewById(R.id.imgPortadaUpdate)
 
         btnUpdateLibro=findViewById(R.id.btnUpdateLibro)
         btnDeleteLibro=findViewById(R.id.btnDeleteLibro)
@@ -64,7 +74,12 @@ class LibroUpdateActivity:AppCompatActivity() {
         datos()
         cargarautores()
 
+        val galleryImage=registerForActivityResult( ActivityResultContracts.GetContent(),
+            ActivityResultCallback {
+                imgPortadaUpdate.setImageURI(it)
+            })
 
+        btnSeleccionarPortadaUpdate.setOnClickListener { galleryImage.launch("image/*") }
 
         btnHome=findViewById(R.id.btnHomeMenu)
         btnLibro=findViewById(R.id.btnLibroMenu)
@@ -80,6 +95,7 @@ class LibroUpdateActivity:AppCompatActivity() {
     }
 
     fun datos(){
+
         var info=intent.extras!!
         apiLibro.findLibroById(info.getInt("libroID")).enqueue(object : Callback<Libro>{
             override fun onResponse(call: Call<Libro>, response: Response<Libro>) {
@@ -90,7 +106,11 @@ class LibroUpdateActivity:AppCompatActivity() {
                     spnAutorLibroUpdate.setText(obj.autor,false)
                     spnGeneroLibroUpdate.setText(obj.genero,false)
                     txtDescripcionLibroUpdate.setText(obj.descripcion)
-                    txtImagenLibroUpdate.setText(obj.imagen)
+
+                    val decodedString = Base64.decode(obj.imagen, Base64.DEFAULT)
+                    val byteArray = decodedString
+                    val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+                    imgPortadaUpdate.setImageBitmap(bitmap)
                 }
             }
 
@@ -108,12 +128,17 @@ class LibroUpdateActivity:AppCompatActivity() {
         spnAutorLibroUpdate.setAdapter(adapter)
     }
     fun update_libro(){
+        val bitmap = (imgPortadaUpdate.drawable as BitmapDrawable).bitmap
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+
         var id=txtCodigoLibroUpdate.text.toString().toInt()
         var tit=txtTituloLibroUpdate.text.toString()
         var aut=spnAutorLibroUpdate.text.toString()
         var gen=spnGeneroLibroUpdate.text.toString()
         var des=txtDescripcionLibroUpdate.text.toString()
-        var img=txtImagenLibroUpdate.text.toString()
+        var img=Base64.encodeToString(byteArray, Base64.DEFAULT)
         var bean=Libro(id,tit,aut,gen,des,img)
         apiLibro.updateLibro(id,bean).enqueue(object: Callback<Libro>{
             override fun onResponse(call: Call<Libro>, response: Response<Libro>) {
