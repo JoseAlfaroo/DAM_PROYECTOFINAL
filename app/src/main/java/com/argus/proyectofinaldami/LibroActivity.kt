@@ -27,7 +27,7 @@ import retrofit2.Response
 class LibroActivity:AppCompatActivity() {
     private lateinit var rvLibro: RecyclerView
     private lateinit var txtBuscarLibro: TextInputEditText
-    private lateinit var btnBuscarLibro: ImageView
+    private lateinit var btnBuscarLibro: Button
     private lateinit var btnNuevoLibro: Button
     private lateinit var btnHome: LinearLayout
     private lateinit var btnLibro: LinearLayout

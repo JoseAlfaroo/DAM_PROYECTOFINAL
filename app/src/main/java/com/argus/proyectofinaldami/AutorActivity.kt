@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputEditText
 class AutorActivity:AppCompatActivity() {
     private lateinit var rvAutor:RecyclerView
     private lateinit var txtBuscarAutor:TextInputEditText
-    private lateinit var btnBuscarAutor:ImageView
+    private lateinit var btnBuscarAutor:Button
     private lateinit var btnNuevoAutor:Button
     private lateinit var btnHome: LinearLayout
     private lateinit var btnLibro: LinearLayout

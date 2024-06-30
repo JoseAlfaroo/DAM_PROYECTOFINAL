@@ -2,13 +2,21 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bamboo">#84b21c</color>
+    <color name="darkerblue">#353F53</color>
     <color name="darkblue">#02305E</color>
+    <color name="darkerpurple">#353149</color>
     <color name="peach">#fff2e2</color>
     <color name="orange">#fa6d04</color>
     <color name="wintermelon">#F8F5F2</color>
     <color name="blue">#5b618a</color>
-    <color name="purple">#5b507a</color>
+    <color name="purple">#5B5165</color>
     <color name="bonewhite">#e8e6f3</color>
     <color name="red">#E68484</color>
+
+    <!--PARA INTERFACES-->
+    <color name="banner">#FF000000</color>
+    <color name="listadobgcolor">#FF000000</color>
+    <color name="btnbuscar">#FF000000</color>
+    <color name="btnagregar">#FF000000</color>
+    <color name="bottombarbg">#FF000000</color>
 </resources>

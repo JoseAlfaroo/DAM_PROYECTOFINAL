@@ -16,149 +16,172 @@
         <LinearLayout
             android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@color/blue"
+            android:layout_height="wrap_content"
+            android:background="@color/banner"
             android:orientation="horizontal"
-            android:padding="3dp"
+            android:paddingLeft="25dp"
+            android:paddingTop="10dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:padding="5dp"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:padding="3dp"
                 android:src="@drawable/logobanner"
                 tools:srcCompat="@drawable/logobanner" />
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:fontFamily="@font/zcool_qingke_huangyou"
                 android:text="The Librarian Cat"
                 android:textAlignment="center"
                 android:textColor="@color/bonewhite"
-                android:textSize="40sp" />
+                android:textSize="37sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-    </LinearLayout>
-
-
-    <ScrollView
-        android:id="@+id/sw_home"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="80dp"
-        app:layout_constraintBottom_toTopOf="@id/menu_home"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="30dp">
-
-            <TextView
-                android:layout_marginTop="100dp"
-                android:id="@+id/textView10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/zcool_qingke_huangyou"
-                android:text="Codigo del Autor"
-                android:textSize="30sp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:enabled="false"
-                app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/id">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtCodigoAutorUpdate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:inputType="text"
-                    android:textSize="12sp"
-                    android:layout_marginTop="10dp"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/zcool_qingke_huangyou"
-                android:text="Nombre del Autor"
-                android:textSize="30sp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/autor_icon">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtNombreAutorUpdate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textSize="12sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
+            android:layout_height="match_parent"
+            android:layout_marginBottom="80dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnUpdateAutor"
-                    android:layout_width="15dp"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/purple"
-                    android:text="Actualizar"
-                    android:textSize="18dp"
+                    android:background="@color/darkerblue"
                     android:fontFamily="@font/zcool_qingke_huangyou"
-                    app:cornerRadius="10dp"
-                    app:icon="@drawable/save" />
+                    android:padding="8dp"
+                    android:text="Actualizar autor"
+                    android:textAlignment="center"
+                    android:textColor="@color/bonewhite"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/btnDeleteAutor"
-                    android:layout_width="20dp"
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:textSize="18dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
                     android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:backgroundTint="@color/red"
-                    android:text="Eliminar"
-                    app:cornerRadius="10dp"
-                    app:icon="@drawable/delete" />
+                    android:text="ID Autor"
+                    android:textSize="28sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textField10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:enabled="false"
+                    app:endIconMode="clear_text"
+                    app:startIconDrawable="@drawable/id">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCodigoAutorUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:inputType="text"
+                        android:textSize="12sp"
+                        android:layout_marginTop="10dp"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/zcool_qingke_huangyou"
+                    android:text="Ingrese nombres del autor"
+                    android:textSize="30sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textField1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    app:endIconMode="clear_text"
+                    app:startIconDrawable="@drawable/account">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNombreAutorUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textSize="12sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:weightSum="1">
+
+                    <Button
+                        android:id="@+id/btnUpdateAutor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:backgroundTint="@color/purple"
+                        android:fontFamily="@font/zcool_qingke_huangyou"
+                        android:text="Actualizar"
+                        android:textSize="18dp"
+                        app:cornerRadius="10dp"
+                        app:icon="@drawable/save" />
+
+                    <Button
+                        android:id="@+id/btnDeleteAutor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="0.5"
+                        android:backgroundTint="@color/red"
+                        android:fontFamily="@font/zcool_qingke_huangyou"
+                        android:text="Eliminar"
+                        android:textSize="18dp"
+                        app:cornerRadius="10dp"
+                        app:icon="@drawable/delete" />
+                </LinearLayout>
+
+
             </LinearLayout>
 
+        </ScrollView>
+
+    </LinearLayout>
 
 
-        </LinearLayout>
-    </ScrollView>
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/menu_home"
