@@ -55,6 +55,35 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvIDSesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/zcool_qingke_huangyou"
+                android:text="id"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvNomSesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/zcool_qingke_huangyou"
+                android:text="nom"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvApeSesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/zcool_qingke_huangyou"
+                android:text="ape"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvEmailSesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/zcool_qingke_huangyou"
+                android:text="email"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

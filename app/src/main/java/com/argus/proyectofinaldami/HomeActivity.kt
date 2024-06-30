@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import com.argus.proyectofinaldami.adaptador.AutorAdapter
 import com.argus.proyectofinaldami.adaptador.LibroAdapter
 import com.argus.proyectofinaldami.controller.AutorController
 import com.argus.proyectofinaldami.entidad.Libro
+import com.argus.proyectofinaldami.entidad.UserSessionData
 import com.argus.proyectofinaldami.services.ApiServiceLibro
 import com.argus.proyectofinaldami.utils.ApiUtils
 import com.argus.proyectofinaldami.utils.appConfig
@@ -23,6 +25,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomeActivity:AppCompatActivity() {
+
+    //datos usu
+    private lateinit var tvUserID:TextView
+    private lateinit var tvUserNom:TextView
+    private lateinit var tvUserApe:TextView
+    private lateinit var tvUserEmail:TextView
+
     private lateinit var rvLibroMenu:RecyclerView
     private lateinit var rvAutorMenu:RecyclerView
     private lateinit var btnHome:LinearLayout
@@ -33,6 +42,8 @@ class HomeActivity:AppCompatActivity() {
 
     private lateinit var apiLibro: ApiServiceLibro
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,6 +53,16 @@ class HomeActivity:AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+
+        tvUserID = findViewById(R.id.tvIDSesion)
+        tvUserNom = findViewById(R.id.tvNomSesion)
+        tvUserApe = findViewById(R.id.tvApeSesion)
+        tvUserEmail = findViewById(R.id.tvEmailSesion)
+
+        cargardatosusu()
+
         rvLibroMenu=findViewById(R.id.rvLibroMenu)
         rvAutorMenu=findViewById(R.id.rvAutorMenu)
 
@@ -52,6 +73,7 @@ class HomeActivity:AppCompatActivity() {
 
         apiLibro=ApiUtils.getAPIServiceTLC()
         listarlibros()
+
 
 
         btnHome=findViewById(R.id.btnHomeMenu)
@@ -67,6 +89,7 @@ class HomeActivity:AppCompatActivity() {
     }
 
     fun listarlibros(){
+
         apiLibro.findLibros(null).enqueue(object: Callback<List<Libro>> {
             override fun onResponse(call: Call<List<Libro>>, response: Response<List<Libro>>) {
                 if(response.isSuccessful){
@@ -82,6 +105,13 @@ class HomeActivity:AppCompatActivity() {
 
             }
         })
+    }
+
+    fun cargardatosusu(){
+        tvUserID.setText(UserSessionData.userID.toString())
+        tvUserNom.setText(UserSessionData.nombres)
+        tvUserApe.setText(UserSessionData.apellidos)
+        tvUserEmail.setText(UserSessionData.email)
     }
 
     fun showAlert(men:String, listener: DialogInterface.OnClickListener? = null){

@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.argus.proyectofinaldami.entidad.User
 import com.argus.proyectofinaldami.entidad.UserLogin
+import com.argus.proyectofinaldami.entidad.UserSessionData
 import com.argus.proyectofinaldami.services.ApiServiceUser
 import com.argus.proyectofinaldami.utils.ApiUtils
 import com.facebook.CallbackManager
@@ -129,8 +130,18 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val user = response.body()
 
-                    Log.d("USUARIO", "Usuario encontrado: ${user!!.userID}")
+                    //Aqui se agregan los datos del usuario encontrado al singleton
+                    Log.d("USUARIO", "Usuario encontrado en BD: ${user!!.userID}")
+                    UserSessionData.userID= user.userID
 
+                    Log.d("USUARIO", "Nombres encontrados en BD: ${user!!.nombres}")
+                    UserSessionData.nombres= user.nombres
+
+                    Log.d("USUARIO", "Apellidos encontrados en BD: ${user!!.apellidos}")
+                    UserSessionData.apellidos= user.apellidos
+
+                    Log.d("USUARIO", "Email encontrado en BD: ${user!!.email}")
+                    UserSessionData.email= user.email
 
                 } else {
                     Log.d("USUARIO", "Usuario no encontrado")
@@ -150,8 +161,24 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val user = response.body()
 
-                    Log.d("USUARIO-FB", "Usuario encontrado: ${user!!.userID}")
+                    Log.d("USUARIO-FB", "ID Usuario encontrado en BD: ${user!!.userID}")
+                    Log.d("USUARIO-FB", "Nombres encontrados en BD: ${user!!.nombres}")
+                    Log.d("USUARIO-FB", "Apellidos encontrados en BD: ${user!!.apellidos}")
+                    Log.d("USUARIO-FB", "Email encontrado en BD: ${user!!.email}")
+
+
+                    //Aqui se agregan los datos del usuario encontrado al singleton
+                    UserSessionData.userID= user.userID
+                    UserSessionData.nombres= user.nombres
+                    UserSessionData.apellidos= user.apellidos
+                    UserSessionData.email= user.email
+
                     Toast.makeText(this@MainActivity, "Inicio exitoso", Toast.LENGTH_SHORT).show()
+
+                    //Mandar a pantalla intermedia
+                    val intent = Intent(this@MainActivity, SplashActivity::class.java)
+                    startActivity(intent)
+
 
                 } else {
                     Log.d("USUARIO-FB", "Usuario no encontrado")
@@ -186,8 +213,8 @@ class MainActivity : AppCompatActivity() {
 
                     Toast.makeText(this@MainActivity, "Inicio exitoso", Toast.LENGTH_SHORT).show()
 
-                    //Mandar a Home al final
-                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    //Mandar a pantalla intermedia
+                    val intent = Intent(this@MainActivity, SplashActivity::class.java)
                     startActivity(intent)
 
 
@@ -234,15 +261,15 @@ class MainActivity : AppCompatActivity() {
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
-                    //Exito
-                    val user = response.body()
 
                     verificarExistenciaUser(txtEmail.text.toString())
 
 
                     Toast.makeText(this@MainActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
 
-                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+
+
+                    val intent = Intent(this@MainActivity, SplashActivity::class.java)
                     startActivity(intent)
 
                 } else {
