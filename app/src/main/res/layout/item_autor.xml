@@ -7,43 +7,36 @@
     android:layout_margin="10dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="20dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/zcool_qingke_huangyou"
-            android:text="Código del Autor"
-            android:textStyle="bold"
-            android:textSize="25sp"/>
+            android:text="ID - Autor"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvCodigoAutor"
             android:layout_width="match_parent"
-            android:textSize="15sp"
-            android:fontFamily="@font/zcool_qingke_huangyou"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/zcool_qingke_huangyou"
-            android:text="Nombre del Autor"
-            android:textStyle="bold"
-            android:textSize="25sp"/>
+            android:textSize="20sp"
+            tools:text="1 - s" />
 
         <TextView
             android:id="@+id/tvNombreAutor"
             android:layout_width="match_parent"
-            android:textSize="15sp"
+            android:layout_height="0dp"
             android:fontFamily="@font/zcool_qingke_huangyou"
-            android:layout_height="wrap_content" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 

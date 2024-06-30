@@ -24,8 +24,8 @@ class LibroAdapter(var lista:List<Libro>):RecyclerView.Adapter<ViewLibro>() {
     }
 
     override fun onBindViewHolder(holder: ViewLibro, position: Int) {
-        holder.tvCodigoLibro.setText(lista.get(position).libroID.toString())
-        holder.tvTituloLibro.setText(lista.get(position).titulo)
+        holder.tvCodigoLibro.setText("#" + lista.get(position).libroID.toString())
+        holder.tvTituloLibro.setText('"' + lista.get(position).titulo + '"')
         holder.tvAutorLibro.setText(lista.get(position).autor)
         holder.tvGeneroLibro.setText(lista.get(position).genero)
 

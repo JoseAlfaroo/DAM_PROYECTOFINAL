@@ -21,8 +21,8 @@ class AutorAdapter(var lista:ArrayList<Autor>):RecyclerView.Adapter<ViewAutor>()
     }
 
     override fun onBindViewHolder(holder: ViewAutor, position: Int) {
-        holder.tvCodigoAutor.setText(lista.get(position).codigo_autor.toString())
-        holder.tvNombreAutor.setText(lista.get(position).nombre_autor)
+        holder.tvCodigoAutor.setText(lista.get(position).codigo_autor.toString() + " - " + lista.get(position).nombre_autor)
+
 
         holder.itemView.setOnClickListener{
             var intent=Intent(appConfig.CONTEXTO,AutorUpdateActivity::class.java)
