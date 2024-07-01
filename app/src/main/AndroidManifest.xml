@@ -102,6 +102,26 @@
         </activity>
 
         <activity
+            android:name=".GeneroActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
+        <activity
+            android:name=".GeneroRegisterActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
+
+        <activity
+            android:name=".GeneroUpdateActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
+
+        <activity
             android:name=".HistorialPrestamoActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">

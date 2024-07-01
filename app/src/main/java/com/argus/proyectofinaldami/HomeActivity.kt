@@ -41,6 +41,7 @@ class HomeActivity:AppCompatActivity() {
     private lateinit var btnHome:LinearLayout
     private lateinit var btnLibro:LinearLayout
     private lateinit var btnAutor:LinearLayout
+    private lateinit var btnGenero:LinearLayout
     private lateinit var btnPrestamo:LinearLayout
     private lateinit var btnPerfil:LinearLayout
 
@@ -87,11 +88,13 @@ class HomeActivity:AppCompatActivity() {
         btnHome=findViewById(R.id.btnHomeMenu)
         btnLibro=findViewById(R.id.btnLibroMenu)
         btnAutor=findViewById(R.id.btnAutorMenu)
+        btnGenero=findViewById(R.id.btnGeneroMenu)
         btnPrestamo=findViewById(R.id.btnPrestamoMenu)
         btnPerfil=findViewById(R.id.btnPerfilMenu)
         btnHome.setOnClickListener { irhome() }
         btnLibro.setOnClickListener { irlibro() }
         btnAutor.setOnClickListener { irautor() }
+        btnGenero.setOnClickListener { irgenero() }
         btnPrestamo.setOnClickListener { irprestamo() }
         btnPerfil.setOnClickListener { irperfil() }
 
@@ -161,6 +164,10 @@ class HomeActivity:AppCompatActivity() {
 
     private fun irautor() {
         val intent = Intent(this, AutorActivity::class.java)
+        startActivity(intent)
+    }
+    private fun irgenero(){
+        val intent = Intent(this, GeneroActivity::class.java)
         startActivity(intent)
     }
 

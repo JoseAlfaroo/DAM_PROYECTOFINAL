@@ -21,6 +21,8 @@
     <string name="PerfilLabel">Perfil</string>
     <string name="LibroHint">Buscar un Libro por Título o Autor</string>
     <string name="AutorHint">Buscar un Autor</string>
+    <string name="GeneroFiltroHint">Buscar un Género</string>
+    <string name="GeneroLabel">Género</string>
     <string name="SpinnerAutorHint">Seleccione un Autor</string>
     <string name="GeneroHint">Seleccione un Género</string>
     <array name="genre">

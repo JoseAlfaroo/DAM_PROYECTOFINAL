@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@color/bonewhite"
-    android:id="@+id/libro_register">
+    android:id="@+id/genero_register">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,18 +55,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="80dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/darkerblue"
                     android:fontFamily="@font/zcool_qingke_huangyou"
                     android:padding="8dp"
-                    android:text="Registrar libro"
+                    android:text="Registrar genero"
                     android:textAlignment="center"
                     android:textColor="@color/bonewhite"
                     android:textSize="30sp"
@@ -74,14 +76,14 @@
 
                 <TextView
                     android:id="@+id/textView2"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="20dp"
                     android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Título del Libro"
-                    android:textSize="30sp" />
+                    android:text="Ingrese nombre de un género"
+                    android:textSize="28sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textField1"
@@ -91,10 +93,11 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/book_open_blank_variant">
+                    android:hint="Ingrese nombre de un género"
+                    app:startIconDrawable="@drawable/account">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtTituloLibroRegister"
+                        android:id="@+id/txtGeneroRegister"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -102,135 +105,8 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Autor del Libro"
-                    android:textSize="30sp"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textField2"
-                    app:startIconDrawable="@drawable/account"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/SpinnerAutorHint"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/spnAutorLibroRegister"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:textSize="12sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Género del Libro"
-                    android:textSize="30sp"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textField3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/GeneroHint"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    app:startIconDrawable="@drawable/tag_text">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/spnGeneroLibroRegister"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:textSize="12sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Descripción del Libro"
-                    android:textSize="30sp"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textField4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    app:endIconMode="clear_text"
-                    app:startIconDrawable="@drawable/script_text">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtDescripcionLibroRegister"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textMultiLine"
-                        android:textSize="12sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Portada"
-                    android:textSize="30sp"/>
-
                 <Button
-                    android:id="@+id/btnSeleccionarPortadaRegister"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:layout_height="wrap_content"
-                    android:text="Sube una imagen"
-                    app:cornerRadius="3dp"
-                    android:backgroundTint="@color/darkblue"
-                    app:icon="@drawable/image"
-                    />
-
-                <ImageView
-                    android:id="@+id/imgPortadaRegister"
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20dp"
-                    tools:srcCompat="@tools:sample/avatars"
-                    android:src="@drawable/unknownbook"/>
-
-                <Button
-                    android:id="@+id/btnRegisterLibro"
+                    android:id="@+id/btnRegisterGenero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -247,7 +123,12 @@
             </LinearLayout>
         </ScrollView>
 
+
+
+
     </LinearLayout>
+
+
 
 
 

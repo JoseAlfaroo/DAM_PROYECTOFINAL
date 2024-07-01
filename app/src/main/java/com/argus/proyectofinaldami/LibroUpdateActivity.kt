@@ -21,10 +21,17 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.argus.proyectofinaldami.controller.AutorController
 import com.argus.proyectofinaldami.entidad.Autor
+import com.argus.proyectofinaldami.entidad.Genero
 import com.argus.proyectofinaldami.entidad.Libro
 import com.argus.proyectofinaldami.services.ApiServiceLibro
 import com.argus.proyectofinaldami.utils.ApiUtils
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,6 +55,8 @@ class LibroUpdateActivity:AppCompatActivity() {
     private lateinit var btnPrestamo: LinearLayout
     private lateinit var btnPerfil: LinearLayout
     private lateinit var apiLibro: ApiServiceLibro
+
+    private lateinit var bd:DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,6 +101,37 @@ class LibroUpdateActivity:AppCompatActivity() {
         btnPrestamo.setOnClickListener { irprestamo() }
         btnPerfil.setOnClickListener { irperfil() }
 
+        bd = FirebaseDatabase.getInstance().reference
+
+        conectar()
+        cargarGeneros()
+
+    }
+
+    fun conectar(){
+        FirebaseApp.initializeApp(this)
+        bd=FirebaseDatabase.getInstance().reference
+    }
+
+    private fun cargarGeneros() {
+        val generoList = mutableListOf<String>()
+        bd.child("genero").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                generoList.clear() // Clear existing genres
+                for (row in snapshot.children) {
+                    val genero = row.getValue(Genero::class.java)
+                    if (genero != null) {
+                        generoList.add(genero.nombre_genero)
+                    }
+                }
+                val adapter = ArrayAdapter(this@LibroUpdateActivity, android.R.layout.simple_dropdown_item_1line, generoList)
+                spnGeneroLibroUpdate.setAdapter(adapter)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                showAlert(error.message)
+            }
+        })
     }
 
     fun datos(){

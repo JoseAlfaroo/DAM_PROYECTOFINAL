@@ -167,7 +167,7 @@
                 android:id="@+id/btnHomeMenu"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.2"
+                android:layout_weight="0.14"
                 android:orientation="vertical">
 
                 <ImageView
@@ -193,7 +193,7 @@
                 android:id="@+id/btnLibroMenu"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.2"
+                android:layout_weight="0.14"
                 android:orientation="vertical">
 
                 <ImageView
@@ -219,7 +219,7 @@
                 android:id="@+id/btnAutorMenu"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.2"
+                android:layout_weight="0.14"
                 android:orientation="vertical">
 
                 <ImageView
@@ -240,12 +240,37 @@
                     android:textSize="20sp" />
 
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/btnGeneroMenu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.14"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView99"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:srcCompat="@drawable/genre" />
+
+                <TextView
+                    android:id="@+id/txtView90"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/zcool_qingke_huangyou"
+                    android:text="Genero"
+                    android:textAlignment="center"
+                    android:textColor="@color/bonewhite"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/btnPrestamoMenu"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.2"
+                android:layout_weight="0.14"
                 android:orientation="vertical">
 
                 <ImageView
@@ -271,7 +296,7 @@
                 android:id="@+id/btnPerfilMenu"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.2"
+                android:layout_weight="0.14"
                 android:orientation="vertical">
 
                 <ImageView
