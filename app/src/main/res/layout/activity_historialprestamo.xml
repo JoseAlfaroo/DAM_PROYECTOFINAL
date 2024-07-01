@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bonewhite"
-    android:id="@+id/perfil">
+    android:id="@+id/historialprestamo">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,12 +52,13 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="80dp">
+            android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -65,106 +66,55 @@
                     android:background="@color/darkerblue"
                     android:fontFamily="@font/zcool_qingke_huangyou"
                     android:padding="8dp"
-                    android:text="Informacion general"
+                    android:text="Historial de prestamos"
                     android:textAlignment="center"
                     android:textColor="@color/bonewhite"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imgPortadaDetail"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/user_image"
-                    tools:srcCompat="@drawable/user_image" />
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="25dp"
-                    android:fontFamily="@font/alatsi"
-                    android:text="Nombre"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvNombreUsuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:fontFamily="@font/alatsi"
-                    android:hint="Apellido"
-                    android:textSize="16sp" />
-
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="25dp"
-                    android:fontFamily="@font/alatsi"
-                    android:text="Apellidos"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvApellidoUsuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:fontFamily="@font/alatsi"
-                    android:hint="Genero"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="25dp"
-                    android:fontFamily="@font/alatsi"
-                    android:text="Email"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvEmailUsuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
-                    android:fontFamily="@font/alatsi"
-                    android:hint="Email"
-                    android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/btnCerrarSesion"
+                    android:id="@+id/btnVolverDetallesPrestamos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginBottom="30dp"
-                    android:backgroundTint="#DC4B4B"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:backgroundTint="@color/btnagregar"
                     android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Cerrar sesion"
-                    android:textSize="22sp"
-                    app:cornerRadius="10dp"
-                    app:icon="@drawable/logout" />
+                    android:text="Registrar prestamos"
+                    android:textAlignment="center"
+                    android:textColor="@color/bonewhite"
+                    android:textSize="21sp"
+                    app:cornerRadius="3dp"
+                    app:icon="@drawable/keyboard_return" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="80dp"
+                    android:orientation="vertical">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewHistorialPrestamos"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+
+                </LinearLayout>
+
+
 
 
             </LinearLayout>
+
         </ScrollView>
+
+
 
     </LinearLayout>
 

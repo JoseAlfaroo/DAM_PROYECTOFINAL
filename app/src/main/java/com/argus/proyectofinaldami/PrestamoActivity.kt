@@ -33,6 +33,7 @@ class PrestamoActivity : AppCompatActivity() {
     private lateinit var btnPerfil: LinearLayout
 
     private lateinit var btnRegistrarPrestamo: Button
+    private lateinit var btnHistorialPrestamos:Button
 
     private lateinit var apiLibro: ApiServiceLibro
     private lateinit var apiDetaPres: ApiServicePrestamo
@@ -54,11 +55,13 @@ class PrestamoActivity : AppCompatActivity() {
         btnPrestamo = findViewById(R.id.btnPrestamoMenu)
         btnPerfil = findViewById(R.id.btnPerfilMenu)
 
+        btnHistorialPrestamos = findViewById(R.id.btnHistorialPrestamos)
+
         apiDetaPres = ApiUtils.getPrestamoAPIServiceTLC()
 
         btnRegistrarPrestamo = findViewById(R.id.btnRegistrarPrestamo)
 
-
+        btnHistorialPrestamos.setOnClickListener { irhistorial() }
         btnRegistrarPrestamo.setOnClickListener { registrarPrestamo() }
         btnHome.setOnClickListener { irHome() }
         btnLibro.setOnClickListener { irLibro() }
@@ -73,6 +76,11 @@ class PrestamoActivity : AppCompatActivity() {
         rvPrestamos.adapter = adapter
 
 
+    }
+
+    private fun irhistorial() {
+        val intent = Intent(this, HistorialPrestamoActivity::class.java)
+        startActivity(intent)
     }
 
 

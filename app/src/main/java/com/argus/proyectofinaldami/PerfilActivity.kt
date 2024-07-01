@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.argus.proyectofinaldami.entidad.DetallesPrestamoTemporal
 import com.argus.proyectofinaldami.entidad.User
 import com.argus.proyectofinaldami.entidad.UserSessionData
 import com.argus.proyectofinaldami.services.ApiServiceUser
@@ -87,6 +88,10 @@ class PerfilActivity:AppCompatActivity() {
         UserSessionData.email=null
         UserSessionData.apellidos=null
         UserSessionData.nombres=null
+
+        //que limpie la lista de detalles de libros a prestar local
+        DetallesPrestamoTemporal.limpiarDetalles()
+
         var intent= Intent(this,MainActivity::class.java)
         startActivity(intent)
     }
