@@ -59,8 +59,12 @@ class AutorUpdateActivity:AppCompatActivity() {
     fun datos(){
         var info=intent.extras!!
         var bean=AutorController().findById(info.getInt("codigo_autor"))
-        txtCodigoAutorUpdate.setText(bean.codigo_autor.toString())
-        txtNombreAutorUpdate.setText(bean.nombre_autor)
+        if (bean != null) {
+            txtCodigoAutorUpdate.setText(bean.codigo_autor.toString())
+        }
+        if (bean != null) {
+            txtNombreAutorUpdate.setText(bean.nombre_autor)
+        }
     }
     fun update_autor(){
         var cod=txtCodigoAutorUpdate.text.toString().toInt()

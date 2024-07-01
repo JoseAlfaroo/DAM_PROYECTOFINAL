@@ -9,7 +9,6 @@ class AutorController {
         var lista=ArrayList<Autor>();
         var CN=appConfig.BD.readableDatabase
         var SQL="select * from tb_autor"
-
         var RS=CN.rawQuery(SQL,null)
         while (RS.moveToNext()){
             var bean=Autor(RS.getInt(0),RS.getString(1))
@@ -39,8 +38,8 @@ class AutorController {
         return estado;
     }
 
-    fun findById(codigo_autor:Int):Autor{
-        lateinit var bean:Autor
+    fun findById(codigo_autor:Int): Autor? {
+        var bean:Autor? = null
         var CN=appConfig.BD.readableDatabase
         var SQL="select * from tb_autor where codautor=?"
         var RS=CN.rawQuery(SQL, arrayOf(codigo_autor.toString()))

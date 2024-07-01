@@ -9,6 +9,7 @@ class InitBD:SQLiteOpenHelper(appConfig.CONTEXTO,appConfig.BD_NAME,null,appConfi
         db.execSQL("create table tb_autor(" +
                 "codautor integer primary key autoincrement,"+
                 "nomautor varchar(50))")
+
         db.execSQL("insert into tb_autor values(null,'Gabriel García Marquez')")
         db.execSQL("insert into tb_autor values(null,'Mario Vargas Llosa')")
         db.execSQL("insert into tb_autor values(null,'César Vallejo')")
