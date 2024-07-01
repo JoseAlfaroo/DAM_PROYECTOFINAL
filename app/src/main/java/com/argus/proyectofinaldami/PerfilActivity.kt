@@ -42,6 +42,7 @@ class PerfilActivity:AppCompatActivity() {
     private lateinit var apiUser: ApiServiceUser
     var callbackManager: CallbackManager? = null
     private lateinit var FBLoginBtn: LoginButton
+    private lateinit var btnGenero:LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +76,9 @@ class PerfilActivity:AppCompatActivity() {
         btnAutor.setOnClickListener { irautor() }
         btnPrestamo.setOnClickListener { irprestamo() }
         btnPerfil.setOnClickListener { irperfil() }
+
+        btnGenero=findViewById(R.id.btnGeneroMenu)
+        btnGenero.setOnClickListener { irgenero() }
     }
 
     fun cargarusuario(){
@@ -110,6 +114,11 @@ class PerfilActivity:AppCompatActivity() {
         val intent = Intent(this, AutorActivity::class.java)
         startActivity(intent)
     }
+    private fun irgenero(){
+        val intent = Intent(this, GeneroActivity::class.java)
+        startActivity(intent)
+    }
+
 
     private fun irprestamo() {
         val intent = Intent(this, PrestamoActivity::class.java)

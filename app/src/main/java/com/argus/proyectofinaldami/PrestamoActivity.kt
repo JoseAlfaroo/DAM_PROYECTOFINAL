@@ -31,6 +31,7 @@ class PrestamoActivity : AppCompatActivity() {
     private lateinit var btnAutor: LinearLayout
     private lateinit var btnPrestamo: LinearLayout
     private lateinit var btnPerfil: LinearLayout
+    private lateinit var btnGenero:LinearLayout
 
     private lateinit var btnRegistrarPrestamo: Button
     private lateinit var btnHistorialPrestamos:Button
@@ -68,6 +69,8 @@ class PrestamoActivity : AppCompatActivity() {
         btnAutor.setOnClickListener { irAutor() }
         btnPrestamo.setOnClickListener { irPrestamo() }
         btnPerfil.setOnClickListener { irPerfil() }
+        btnGenero=findViewById(R.id.btnGeneroMenu)
+        btnGenero.setOnClickListener { irgenero() }
 
         // Configuracion del rv
         val rvPrestamos = findViewById<RecyclerView>(R.id.recyclerViewPrestamos)
@@ -137,6 +140,10 @@ class PrestamoActivity : AppCompatActivity() {
 
     private fun irLibro() {
         val intent = Intent(this, LibroActivity::class.java)
+        startActivity(intent)
+    }
+    private fun irgenero(){
+        val intent = Intent(this, GeneroActivity::class.java)
         startActivity(intent)
     }
 

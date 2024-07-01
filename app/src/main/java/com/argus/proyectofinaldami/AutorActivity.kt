@@ -25,6 +25,7 @@ class AutorActivity:AppCompatActivity() {
     private lateinit var btnAutor: LinearLayout
     private lateinit var btnPrestamo: LinearLayout
     private lateinit var btnPerfil: LinearLayout
+    private lateinit var btnGenero:LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +60,9 @@ class AutorActivity:AppCompatActivity() {
         btnPerfil.setOnClickListener { irperfil() }
         btnBuscarAutor.setOnClickListener { buscarautor() }
         btnNuevoAutor.setOnClickListener { nuevoautor() }
+
+        btnGenero=findViewById(R.id.btnGeneroMenu)
+        btnGenero.setOnClickListener { irgenero() }
     }
 
     fun buscarautor(){
@@ -81,6 +85,10 @@ class AutorActivity:AppCompatActivity() {
 
     private fun irhome() {
         val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
+    private fun irgenero(){
+        val intent = Intent(this, GeneroActivity::class.java)
         startActivity(intent)
     }
 

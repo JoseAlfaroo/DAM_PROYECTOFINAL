@@ -23,6 +23,8 @@ class AutorRegisterActivity:AppCompatActivity() {
     private lateinit var btnPrestamo: LinearLayout
     private lateinit var btnPerfil: LinearLayout
 
+    private lateinit var btnGenero:LinearLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -46,6 +48,8 @@ class AutorRegisterActivity:AppCompatActivity() {
         btnAutor.setOnClickListener { irautor() }
         btnPrestamo.setOnClickListener { irprestamo() }
         btnPerfil.setOnClickListener { irperfil() }
+        btnGenero=findViewById(R.id.btnGeneroMenu)
+        btnGenero.setOnClickListener { irgenero() }
     }
     fun register_autor(){
         var nom=txtNombreAutorRegister.text.toString()
@@ -69,6 +73,10 @@ class AutorRegisterActivity:AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         var intent= Intent(this,AutorActivity::class.java)
+        startActivity(intent)
+    }
+    private fun irgenero(){
+        val intent = Intent(this, GeneroActivity::class.java)
         startActivity(intent)
     }
 

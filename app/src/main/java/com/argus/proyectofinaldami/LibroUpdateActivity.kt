@@ -54,6 +54,8 @@ class LibroUpdateActivity:AppCompatActivity() {
     private lateinit var btnAutor: LinearLayout
     private lateinit var btnPrestamo: LinearLayout
     private lateinit var btnPerfil: LinearLayout
+
+    private lateinit var btnGenero:LinearLayout
     private lateinit var apiLibro: ApiServiceLibro
 
     private lateinit var bd:DatabaseReference
@@ -100,6 +102,8 @@ class LibroUpdateActivity:AppCompatActivity() {
         btnAutor.setOnClickListener { irautor() }
         btnPrestamo.setOnClickListener { irprestamo() }
         btnPerfil.setOnClickListener { irperfil() }
+        btnGenero=findViewById(R.id.btnGeneroMenu)
+        btnGenero.setOnClickListener { irgenero() }
 
         bd = FirebaseDatabase.getInstance().reference
 
@@ -278,6 +282,10 @@ class LibroUpdateActivity:AppCompatActivity() {
 
     private fun irlibro() {
         val intent = Intent(this, LibroActivity::class.java)
+        startActivity(intent)
+    }
+    private fun irgenero(){
+        val intent = Intent(this, GeneroActivity::class.java)
         startActivity(intent)
     }
 

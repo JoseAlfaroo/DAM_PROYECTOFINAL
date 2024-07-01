@@ -27,6 +27,7 @@ class HistorialPrestamoActivity : AppCompatActivity() {
     private lateinit var btnAutor: LinearLayout
     private lateinit var btnPrestamo: LinearLayout
     private lateinit var btnPerfil: LinearLayout
+    private lateinit var btnGenero:LinearLayout
     private lateinit var btnVolverDetallesPrestamos: Button
 
     private lateinit var recyclerViewHistorialPrestamos: RecyclerView
@@ -63,6 +64,8 @@ class HistorialPrestamoActivity : AppCompatActivity() {
         btnAutor.setOnClickListener { irAutor() }
         btnPrestamo.setOnClickListener { irPrestamo() }
         btnPerfil.setOnClickListener { irPerfil() }
+        btnGenero=findViewById(R.id.btnGeneroMenu)
+        btnGenero.setOnClickListener { irgenero() }
     }
 
     private fun obtenerHistorialPrestamos(userId: Int) {
@@ -91,6 +94,10 @@ class HistorialPrestamoActivity : AppCompatActivity() {
 
     private fun irHome() {
         val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
+    private fun irgenero(){
+        val intent = Intent(this, GeneroActivity::class.java)
         startActivity(intent)
     }
 
