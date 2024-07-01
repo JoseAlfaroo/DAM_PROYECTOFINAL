@@ -24,6 +24,10 @@ object DetallesPrestamoTemporal {
         detallesPrestamo.clear()
     }
 
+    fun nroElementos(): Int {
+        return detallesPrestamo.size
+    }
+
     fun registrarPrestamo():Prestamo{
 
         return Prestamo(

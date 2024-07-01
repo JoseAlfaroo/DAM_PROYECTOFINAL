@@ -28,7 +28,6 @@ class LibroAdapter(var lista:List<Libro>):RecyclerView.Adapter<ViewLibro>() {
         holder.tvCodigoLibro.setText("#" + lista.get(position).libroID.toString())
         holder.tvTituloLibro.setText('"' + lista.get(position).titulo + '"')
         holder.tvAutorLibro.setText(lista.get(position).autor)
-        holder.tvGeneroLibro.setText(lista.get(position).genero)
 
         val decodedString = Base64.decode(lista.get(position).imagen, Base64.DEFAULT)
         val byteArray = decodedString

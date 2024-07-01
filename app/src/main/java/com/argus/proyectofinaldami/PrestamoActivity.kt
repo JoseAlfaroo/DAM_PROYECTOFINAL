@@ -77,6 +77,15 @@ class PrestamoActivity : AppCompatActivity() {
 
 
     private fun registrarPrestamo() {
+
+
+
+        var nroDetalles = DetallesPrestamoTemporal.nroElementos()
+
+        if (nroDetalles == 0){
+            return Toast.makeText(this@PrestamoActivity, "No has solicitado ningún libro, hazlo desde Home.", Toast.LENGTH_SHORT).show()
+        }
+
         val prestamo = DetallesPrestamoTemporal.registrarPrestamo()
 
         // Convertir el objeto prestamo a JSON

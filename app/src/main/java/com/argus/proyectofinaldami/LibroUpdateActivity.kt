@@ -189,7 +189,7 @@ class LibroUpdateActivity:AppCompatActivity() {
 
     fun delete_libro(){
         var id=txtCodigoLibroUpdate.text.toString().toInt()
-        showAlertConfirm("Esta seguro de eliminar el Libro con ID : "+id,id)
+        showAlertConfirm("¿Seguro de eliminar el libro #"+id+"?",id)
     }
 
     override fun onBackPressed() {
@@ -200,7 +200,7 @@ class LibroUpdateActivity:AppCompatActivity() {
 
     fun showAlertConfirm(men:String,id:Int){
         val builder= AlertDialog.Builder(this)
-        builder.setTitle("App The Librarian Cat")
+        builder.setTitle("The Librarian Cat")
         builder.setMessage(men)
         builder.setPositiveButton("Aceptar",DialogInterface.OnClickListener{
                 dialogInterface: DialogInterface, i: Int ->

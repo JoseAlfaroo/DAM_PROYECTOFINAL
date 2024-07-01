@@ -4,114 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="25dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="25dp"
-    android:layout_marginBottom="10dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="20dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:fontFamily="@font/zcool_qingke_huangyou"
-            android:text="Código"
-            android:textAlignment="center"
-            android:textSize="23sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvCodigoLibro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/darkerblue"
-            android:fontFamily="@font/zcool_qingke_huangyou"
-            android:padding="5dp"
-            android:text="#666"
-            android:textAlignment="center"
-            android:textColor="@color/bonewhite"
-            android:textSize="23sp" />
-
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvCodigoLibro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/alatsi"
+                android:text="id"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvTituloLibro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:hint="Titulo"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvTituloLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/alatsi"
+                android:text="Título"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imgLibroItem"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    tools:srcCompat="@tools:sample/avatars" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tvAutorLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/alatsi"
+                android:text="Autor"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Autor"
-                    android:textSize="23sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvAutorLibro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Género"
-                    android:textSize="23sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvGeneroLibro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:textSize="20sp" />
-            </LinearLayout>
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgLibroItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

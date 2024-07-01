@@ -190,7 +190,7 @@
                         android:id="@+id/txtDescripcionLibroRegister"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="textMultiLine"
                         android:textSize="12sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
