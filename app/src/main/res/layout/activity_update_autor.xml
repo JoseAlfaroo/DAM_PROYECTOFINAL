@@ -196,7 +196,7 @@
             android:id="@+id/bar_menu_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue"
+            android:backgroundTint="@color/bottombarbg"
             android:gravity="bottom" />
 
         <LinearLayout
