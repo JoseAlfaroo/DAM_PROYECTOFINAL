@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@color/bonewhite"
-    android:id="@+id/perfil">
+    android:id="@+id/libro_detail">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,57 +65,60 @@
                     android:background="@color/darkerblue"
                     android:fontFamily="@font/zcool_qingke_huangyou"
                     android:padding="8dp"
-                    android:text="Mi Perfíl"
+                    android:text="Libro"
                     android:textAlignment="center"
                     android:textColor="@color/bonewhite"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/tvTituloLibroDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Titulo"
+                    android:fontFamily="@font/zcool_qingke_huangyou"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/tvAutorLibroDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Autor"
+                    android:fontFamily="@font/zcool_qingke_huangyou"
+                    android:textStyle="italic"
+                    android:textSize="30sp"
+                    android:textAlignment="center"/>
+
                 <ImageView
                     android:id="@+id/imgPortadaDetail"
-                    android:layout_width="100dp"
-                    android:layout_height="80dp"
+                    android:layout_width="200dp"
+                    android:layout_height="300dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/user_image"
-                    tools:srcCompat="@drawable/user_image" />
+                    tools:srcCompat="@tools:sample/avatars" />
+
 
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Nombre"
+                    android:text="Genero"
                     android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/tvNombreUsuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:hint="Apellido"
-                    android:textSize="25sp" />
-
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Apellido"
-                    android:textSize="30sp" />
-
-                <TextView
-                    android:id="@+id/tvApellidoUsuario"
+                    android:id="@+id/tvGeneroLibroDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -133,34 +136,19 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Email"
+                    android:text="Descripcion"
                     android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/tvEmailUsuario"
+                    android:id="@+id/tvDescripcionLibroDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:hint="Email"
-                    android:textSize="25sp" />
-
-                <Button
-                    android:id="@+id/btnCerrarSesion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:backgroundTint="@color/red"
-                    android:fontFamily="@font/zcool_qingke_huangyou"
-                    android:text="Cerrar Sesion"
-                    android:textSize="22sp"
-                    app:cornerRadius="15dp"
-                    app:icon="@drawable/logout" />
+                    android:hint="Descripcion"
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

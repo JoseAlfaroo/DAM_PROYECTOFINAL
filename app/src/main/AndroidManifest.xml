@@ -75,6 +75,13 @@
             android:windowSoftInputMode="adjustPan">
 
         </activity>
+
+        <activity
+            android:name=".LibroDetailActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
         <activity
             android:name=".AutorActivity"
             android:exported="true"
@@ -89,6 +96,13 @@
         </activity>
         <activity
             android:name=".AutorUpdateActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
+
+        <activity
+            android:name=".PerfilActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
 

@@ -164,6 +164,12 @@ class LibroUpdateActivity:AppCompatActivity() {
         showAlertConfirm("Esta seguro de eliminar el Libro con ID : "+id,id)
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        var intent= Intent(this,LibroActivity::class.java)
+        startActivity(intent)
+    }
+
     fun showAlertConfirm(men:String,id:Int){
         val builder= AlertDialog.Builder(this)
         builder.setTitle("App The Librarian Cat")
@@ -216,7 +222,7 @@ class LibroUpdateActivity:AppCompatActivity() {
         startActivity(intent)
     }
     fun irperfil(){
-        //var intent=Intent(this,PerfilActivity::class.java)
+        var intent=Intent(this,PerfilActivity::class.java)
         startActivity(intent)
     }
 }

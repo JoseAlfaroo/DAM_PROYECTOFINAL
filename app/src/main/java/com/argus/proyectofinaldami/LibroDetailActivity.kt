@@ -2,44 +2,67 @@ package com.argus.proyectofinaldami
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Base64
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.argus.proyectofinaldami.controller.AutorController
 import com.argus.proyectofinaldami.entidad.Autor
+import com.argus.proyectofinaldami.entidad.Libro
+import com.argus.proyectofinaldami.services.ApiServiceLibro
+import com.argus.proyectofinaldami.utils.ApiUtils
 import com.google.android.material.textfield.TextInputEditText
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.ByteArrayOutputStream
 
-class AutorUpdateActivity:AppCompatActivity() {
-    private lateinit var txtCodigoAutorUpdate: TextInputEditText
-    private lateinit var txtNombreAutorUpdate: TextInputEditText
-    private lateinit var btnUpdateAutor: Button
-    private lateinit var btnDeleteAutor: Button
+class LibroDetailActivity:AppCompatActivity() {
+
+    private lateinit var tvTituloLibroDetail:TextView
+    private lateinit var tvAutorLibroDetail: TextView
+    private lateinit var tvGeneroLibroDetail: TextView
+    private lateinit var tvDescripcionLibroDetail:TextView
+    private lateinit var imgPortadaDetail: ImageView
+
     private lateinit var btnHome: LinearLayout
     private lateinit var btnLibro: LinearLayout
     private lateinit var btnAutor: LinearLayout
     private lateinit var btnPrestamo: LinearLayout
     private lateinit var btnPerfil: LinearLayout
+    private lateinit var apiLibro: ApiServiceLibro
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_update_autor)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.autor_update)) { v, insets ->
+        setContentView(R.layout.activity_detail_libro)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.libro_detail)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        txtCodigoAutorUpdate=findViewById(R.id.txtCodigoAutorUpdate)
-        txtNombreAutorUpdate=findViewById(R.id.txtNombreAutorUpdate)
-        btnUpdateAutor=findViewById(R.id.btnUpdateAutor)
-        btnDeleteAutor=findViewById(R.id.btnDeleteAutor)
-        btnUpdateAutor.setOnClickListener { update_autor() }
-        btnDeleteAutor.setOnClickListener { delete_autor() }
+        tvTituloLibroDetail=findViewById(R.id.tvTituloLibroDetail)
+        tvAutorLibroDetail=findViewById(R.id.tvAutorLibroDetail)
+        tvGeneroLibroDetail=findViewById(R.id.tvGeneroLibroDetail)
+        tvDescripcionLibroDetail=findViewById(R.id.tvDescripcionLibroDetail)
+        imgPortadaDetail=findViewById(R.id.imgPortadaDetail)
+
+        apiLibro=ApiUtils.getAPIServiceTLC()
+        datos()
 
         btnHome=findViewById(R.id.btnHomeMenu)
         btnLibro=findViewById(R.id.btnLibroMenu)
@@ -51,36 +74,37 @@ class AutorUpdateActivity:AppCompatActivity() {
         btnAutor.setOnClickListener { irautor() }
         btnPrestamo.setOnClickListener { irprestamo() }
         btnPerfil.setOnClickListener { irperfil() }
-        datos()
-    }
-    fun datos(){
-        var info=intent.extras!!
-        var bean=AutorController().findById(info.getInt("codigo_autor"))
-        txtCodigoAutorUpdate.setText(bean.codigo_autor.toString())
-        txtNombreAutorUpdate.setText(bean.nombre_autor)
-    }
-    fun update_autor(){
-        var cod=txtCodigoAutorUpdate.text.toString().toInt()
-        var nom=txtNombreAutorUpdate.text.toString()
-        var bean=Autor(cod,nom)
-        var salida=AutorController().update(bean)
-        if(salida>0){
-            showAlert("Autor Actualizado", DialogInterface.OnClickListener { dialog, which ->
-                irautor()
-            })
-        }
-        else
-            showAlert("Error en la actualización de un Autor")
+
     }
 
-    fun delete_autor(){
-        var cod=txtCodigoAutorUpdate.text.toString().toInt()
-        showAlertConfirm("Esta seguro de eliminar Autor con ID : "+cod,cod)
+    fun datos(){
+        var info=intent.extras!!
+        apiLibro.findLibroById(info.getInt("libroID")).enqueue(object : Callback<Libro>{
+            override fun onResponse(call: Call<Libro>, response: Response<Libro>) {
+                if(response.isSuccessful){
+                    var obj=response.body()!!
+                    tvTituloLibroDetail.setText(obj.titulo)
+                    tvAutorLibroDetail.setText(obj.autor)
+                    tvGeneroLibroDetail.setText(obj.genero)
+                    tvDescripcionLibroDetail.setText(obj.descripcion)
+
+                    val decodedString = Base64.decode(obj.imagen, Base64.DEFAULT)
+                    val byteArray = decodedString
+                    val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+                    imgPortadaDetail.setImageBitmap(bitmap)
+                }
+            }
+
+            override fun onFailure(call: Call<Libro>, t: Throwable) {
+                showAlert(t.localizedMessage)
+            }
+
+        })
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        var intent= Intent(this,AutorActivity::class.java)
+        var intent= Intent(this,LibroActivity::class.java)
         startActivity(intent)
     }
 
@@ -89,28 +113,7 @@ class AutorUpdateActivity:AppCompatActivity() {
         builder.setTitle("App The Librarian Cat")
         builder.setMessage(men)
         builder.setPositiveButton("Aceptar",listener)
-        val dialog: AlertDialog =builder.create()
-        dialog.show()
-    }
-
-    fun showAlertConfirm(men:String,cod:Int){
-        val builder= AlertDialog.Builder(this)
-        builder.setTitle("App The Librarian Cat")
-        builder.setMessage(men)
-        builder.setPositiveButton("Aceptar",DialogInterface.OnClickListener{
-                dialogInterface: DialogInterface, i: Int ->
-            var salida=AutorController().delete(cod)
-            if(salida>0) {
-                showAlert("Autor Eliminado", DialogInterface.OnClickListener { dialog, which ->
-                    irautor()
-                })
-            }
-            else {
-                showAlert("Error en la eliminación del Autor")
-            }
-        })
-        builder.setNegativeButton("Cancelar",null)
-        val dialog: AlertDialog =builder.create()
+        val dialog: AlertDialog=builder.create()
         dialog.show()
     }
 

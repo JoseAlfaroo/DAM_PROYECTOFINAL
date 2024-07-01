@@ -124,6 +124,12 @@ class LibroRegisterActivity:AppCompatActivity() {
         })
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        var intent= Intent(this,LibroActivity::class.java)
+        startActivity(intent)
+    }
+
     fun showAlert(men:String, listener: DialogInterface.OnClickListener? = null){
         val builder= AlertDialog.Builder(this)
         builder.setTitle("App The Librarian Cat")
@@ -152,7 +158,7 @@ class LibroRegisterActivity:AppCompatActivity() {
         startActivity(intent)
     }
     fun irperfil(){
-        //var intent=Intent(this,PerfilActivity::class.java)
+        var intent=Intent(this,PerfilActivity::class.java)
         startActivity(intent)
     }
 }

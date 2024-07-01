@@ -145,7 +145,7 @@ class LibroActivity:AppCompatActivity() {
         startActivity(intent)
     }
     fun irperfil(){
-        //var intent=Intent(this,PerfilActivity::class.java)
+        var intent=Intent(this,PerfilActivity::class.java)
         startActivity(intent)
     }
 }

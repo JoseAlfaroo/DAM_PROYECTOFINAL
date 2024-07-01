@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.argus.proyectofinaldami.LibroDetailActivity
 import com.argus.proyectofinaldami.LibroUpdateActivity
 import com.argus.proyectofinaldami.R
 import com.argus.proyectofinaldami.entidad.Libro
@@ -37,7 +38,7 @@ class LibroAdapter(var lista:List<Libro>):RecyclerView.Adapter<ViewLibro>() {
 
 
         holder.itemView.setOnClickListener{
-            var intent=Intent(appConfig.CONTEXTO,LibroUpdateActivity::class.java)
+            var intent=Intent(appConfig.CONTEXTO,LibroDetailActivity::class.java)
             intent.putExtra("libroID",lista.get(position).libroID)
 
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)

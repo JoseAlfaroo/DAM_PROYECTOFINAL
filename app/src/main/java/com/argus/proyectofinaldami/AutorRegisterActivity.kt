@@ -66,6 +66,12 @@ class AutorRegisterActivity:AppCompatActivity() {
             showAlert("Error en el registro de un Autor")
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        var intent= Intent(this,AutorActivity::class.java)
+        startActivity(intent)
+    }
+
     fun showAlert(men:String, listener: DialogInterface.OnClickListener? = null){
         val builder= AlertDialog.Builder(this)
         builder.setTitle("App The Librarian Cat")
@@ -94,7 +100,7 @@ class AutorRegisterActivity:AppCompatActivity() {
         startActivity(intent)
     }
     fun irperfil(){
-        //var intent=Intent(this,PerfilActivity::class.java)
+        var intent=Intent(this,PerfilActivity::class.java)
         startActivity(intent)
     }
 }
