@@ -177,7 +177,7 @@ class GeneroUpdateActivity:AppCompatActivity() {
     }
 
     private fun irautor() {
-        val intent = Intent(this, GeneroUpdateActivity::class.java)
+        val intent = Intent(this, AutorActivity::class.java)
         startActivity(intent)
     }
 

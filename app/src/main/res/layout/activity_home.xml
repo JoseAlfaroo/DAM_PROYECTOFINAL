@@ -270,7 +270,7 @@
                 android:id="@+id/btnPrestamoMenu"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.14"
+                android:layout_weight="0.17"
                 android:orientation="vertical">
 
                 <ImageView

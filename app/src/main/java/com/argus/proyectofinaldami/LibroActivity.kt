@@ -125,7 +125,7 @@ class LibroActivity:AppCompatActivity() {
 
     fun showAlert(men:String, listener: DialogInterface.OnClickListener? = null){
         val builder= AlertDialog.Builder(this)
-        builder.setTitle("App The Librarian Cat")
+        builder.setTitle("The Librarian Cat")
         builder.setMessage(men)
         builder.setPositiveButton("Aceptar",listener)
         val dialog: AlertDialog =builder.create()
