@@ -63,6 +63,8 @@ class AutorUpdateActivity:AppCompatActivity() {
         var cod=txtCodigoAutorUpdate.text.toString().toInt()
         var nom=txtNombreAutorUpdate.text.toString()
         var bean=Autor(cod,nom)
+
+
         var salida=AutorController().update(bean)
         if(salida>0){
             showAlert("Autor Actualizado", DialogInterface.OnClickListener { dialog, which ->

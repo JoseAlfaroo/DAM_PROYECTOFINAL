@@ -140,6 +140,34 @@ class LibroUpdateActivity:AppCompatActivity() {
         var des=txtDescripcionLibroUpdate.text.toString()
         var img=Base64.encodeToString(byteArray, Base64.DEFAULT)
         var bean=Libro(id,tit,aut,gen,des,img)
+
+        val camposFaltantes = mutableListOf<String>()
+
+        if (tit.isEmpty()) {
+            camposFaltantes.add("Título")
+        }
+        if (aut.isEmpty()) {
+            camposFaltantes.add("Autor")
+        }
+        if (gen.isEmpty()) {
+            camposFaltantes.add("Género")
+        }
+        if (des.isEmpty()) {
+            camposFaltantes.add("Descripción")
+        }
+
+        if (camposFaltantes.isNotEmpty()) {
+            val mensaje = "Faltan los siguientes campos por llenar:\n${camposFaltantes.joinToString(", ")}"
+            showAlert(mensaje)
+            return
+        }
+
+        val autores = AutorController().findAll()
+        val autorNames = autores.map { it.nombre_autor }
+        if (!autorNames.contains(aut)) {
+            showAlert("El autor seleccionado no es válido.")
+            return
+        }
         apiLibro.updateLibro(id,bean).enqueue(object: Callback<Libro>{
             override fun onResponse(call: Call<Libro>, response: Response<Libro>) {
                 if (response.isSuccessful){
