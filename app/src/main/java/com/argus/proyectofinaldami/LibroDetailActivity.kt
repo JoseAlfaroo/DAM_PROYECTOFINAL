@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,6 +23,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.argus.proyectofinaldami.controller.AutorController
 import com.argus.proyectofinaldami.entidad.Autor
+import com.argus.proyectofinaldami.entidad.DetallesPrestamoTemporal
 import com.argus.proyectofinaldami.entidad.Libro
 import com.argus.proyectofinaldami.services.ApiServiceLibro
 import com.argus.proyectofinaldami.utils.ApiUtils
@@ -38,6 +40,8 @@ class LibroDetailActivity:AppCompatActivity() {
     private lateinit var tvGeneroLibroDetail: TextView
     private lateinit var tvDescripcionLibroDetail:TextView
     private lateinit var imgPortadaDetail: ImageView
+
+    private lateinit var btnAgregarDetalleLibro: Button
 
     private lateinit var btnHome: LinearLayout
     private lateinit var btnLibro: LinearLayout
@@ -61,6 +65,8 @@ class LibroDetailActivity:AppCompatActivity() {
         tvDescripcionLibroDetail=findViewById(R.id.tvDescripcionLibroDetail)
         imgPortadaDetail=findViewById(R.id.imgPortadaDetail)
 
+        btnAgregarDetalleLibro=findViewById(R.id.btnAgregarDetalleLibro)
+
         apiLibro=ApiUtils.getAPIServiceTLC()
         datos()
 
@@ -69,6 +75,9 @@ class LibroDetailActivity:AppCompatActivity() {
         btnAutor=findViewById(R.id.btnAutorMenu)
         btnPrestamo=findViewById(R.id.btnPrestamoMenu)
         btnPerfil=findViewById(R.id.btnPerfilMenu)
+
+        btnAgregarDetalleLibro.setOnClickListener { agregarDetalleLibro() }
+
         btnHome.setOnClickListener { irhome() }
         btnLibro.setOnClickListener { irlibro() }
         btnAutor.setOnClickListener { irautor() }
@@ -76,6 +85,17 @@ class LibroDetailActivity:AppCompatActivity() {
         btnPerfil.setOnClickListener { irperfil() }
 
     }
+
+    //pal detalle
+    fun agregarDetalleLibro(){
+
+        var libroID = intent.extras!!.getInt("libroID")
+        DetallesPrestamoTemporal.agregarDetalle(libroID)
+        Toast.makeText(this, "Libro agregado al préstamo", Toast.LENGTH_SHORT).show()
+
+
+    }
+
 
     fun datos(){
         var info=intent.extras!!
@@ -110,7 +130,7 @@ class LibroDetailActivity:AppCompatActivity() {
 
     fun showAlert(men:String, listener: DialogInterface.OnClickListener? = null){
         val builder= AlertDialog.Builder(this)
-        builder.setTitle("App The Librarian Cat")
+        builder.setTitle("The Librarian Cat")
         builder.setMessage(men)
         builder.setPositiveButton("Aceptar",listener)
         val dialog: AlertDialog=builder.create()

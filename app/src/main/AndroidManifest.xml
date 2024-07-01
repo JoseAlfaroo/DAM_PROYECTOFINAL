@@ -102,6 +102,13 @@
         </activity>
 
         <activity
+            android:name=".PrestamoActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
+
+        <activity
             android:name=".PerfilActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">

@@ -164,7 +164,7 @@ class HomeActivity:AppCompatActivity() {
     }
 
     fun irprestamo(){
-        //var intent=Intent(this,PrestamoActivity::class.java)
+        var intent=Intent(this,PrestamoActivity::class.java)
         startActivity(intent)
     }
     fun irperfil(){
