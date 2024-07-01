@@ -97,7 +97,7 @@ class AutorUpdateActivity:AppCompatActivity() {
 
     fun showAlertConfirm(men:String,cod:Int){
         val builder= AlertDialog.Builder(this)
-        builder.setTitle("App The Librarian Cat")
+        builder.setTitle("The Librarian Cat")
         builder.setMessage(men)
         builder.setPositiveButton("Aceptar",DialogInterface.OnClickListener{
                 dialogInterface: DialogInterface, i: Int ->
@@ -116,26 +116,28 @@ class AutorUpdateActivity:AppCompatActivity() {
         dialog.show()
     }
 
-    fun irhome(){
-        var intent= Intent(this,HomeActivity::class.java)
+    private fun irhome() {
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
 
-    fun irlibro(){
-        var intent= Intent(this,LibroActivity::class.java)
-        startActivity(intent)
-    }
-    fun irautor(){
-        var intent= Intent(this,AutorActivity::class.java)
+    private fun irlibro() {
+        val intent = Intent(this, LibroActivity::class.java)
         startActivity(intent)
     }
 
-    fun irprestamo(){
-        //var intent=Intent(this,PrestamoActivity::class.java)
+    private fun irautor() {
+        val intent = Intent(this, AutorActivity::class.java)
         startActivity(intent)
     }
-    fun irperfil(){
-        var intent=Intent(this,PerfilActivity::class.java)
+
+    private fun irprestamo() {
+        val intent = Intent(this, PrestamoActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun irperfil() {
+        val intent = Intent(this, PerfilActivity::class.java)
         startActivity(intent)
     }
 }

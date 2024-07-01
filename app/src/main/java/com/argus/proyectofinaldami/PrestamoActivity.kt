@@ -83,7 +83,7 @@ class PrestamoActivity : AppCompatActivity() {
         val gson = Gson()
         val json = gson.toJson(prestamo)
 
-        Log.d("JSON_PRESTAMO_ENVIADO", json) // Imprimir el JSON enviado
+        Log.d("JSON_PRESTAMO_ENVIADO", json) // Imprimir el json enviado
 
         apiDetaPres.registrarPrestamo(prestamo).enqueue(object : Callback<Prestamo> {
             override fun onResponse(call: Call<Prestamo>, response: Response<Prestamo>) {
@@ -91,6 +91,10 @@ class PrestamoActivity : AppCompatActivity() {
                     val prestamoResponse = response.body()
                     Log.d("REGISTRO PRESTAMO", "Éxito: $prestamoResponse")
                     Toast.makeText(this@PrestamoActivity, "Préstamo registrado exitosamente", Toast.LENGTH_SHORT).show()
+
+                    DetallesPrestamoTemporal.limpiarDetalles()
+                    recreate()
+
                 } else {
                     Log.d("REGISTRO PRESTAMO", "Error en la respuesta: ${response.errorBody()?.string()}")
                     Toast.makeText(this@PrestamoActivity, "Error al registrar el préstamo", Toast.LENGTH_SHORT).show()
@@ -130,7 +134,7 @@ class PrestamoActivity : AppCompatActivity() {
     }
 
     private fun irPerfil() {
-        // val intent = Intent(this, PerfilActivity::class.java)
-        // startActivity(intent)
+        val intent = Intent(this, PerfilActivity::class.java)
+        startActivity(intent)
     }
 }

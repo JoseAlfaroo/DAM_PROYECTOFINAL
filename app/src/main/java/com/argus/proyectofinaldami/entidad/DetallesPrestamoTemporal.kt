@@ -25,10 +25,14 @@ object DetallesPrestamoTemporal {
     }
 
     fun registrarPrestamo():Prestamo{
+
         return Prestamo(
             userID = userID,
             fechaPrestamo = fechaPrestamo,
             detallesPrestamos = detallesPrestamo
         )
+
+
+
     }
 }
