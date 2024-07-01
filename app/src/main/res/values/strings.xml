@@ -13,6 +13,7 @@
     <string name="LoginButtonLabel">Iniciar sesión</string>
     <string name="LoginInsteadButtonLabel"><u>¿Ya tienes una cuenta? Inicia sesión</u></string>
     <string name="RegisterButtonLabel">Registrarse</string>
+    <string name="FBLoginLabel">Ingresar con Facebook</string>
     <string name="HomeLabel">Home</string>
     <string name="BookLabel">Libros</string>
     <string name="AutorLabel">Autores</string>

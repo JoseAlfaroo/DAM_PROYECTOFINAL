@@ -2,15 +2,31 @@ package com.argus.proyectofinaldami
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.argus.proyectofinaldami.entidad.User
 import com.argus.proyectofinaldami.entidad.UserSessionData
 import com.argus.proyectofinaldami.services.ApiServiceUser
+import com.argus.proyectofinaldami.utils.ApiUtils
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.GraphRequest
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
+import org.json.JSONException
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.Arrays
 
 class PerfilActivity:AppCompatActivity() {
     private lateinit var tvNombreUsuario:TextView
@@ -22,6 +38,9 @@ class PerfilActivity:AppCompatActivity() {
     private lateinit var btnPrestamo: LinearLayout
     private lateinit var btnPerfil: LinearLayout
     private lateinit var btnCerrarSesion:Button
+    private lateinit var apiUser: ApiServiceUser
+    var callbackManager: CallbackManager? = null
+    private lateinit var FBLoginBtn: LoginButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +51,10 @@ class PerfilActivity:AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+        //FBLoginBtnPerfil.setOnClickListener{ fblogin() }
+        apiUser= ApiUtils.getUserAPIServiceTLC()
         tvNombreUsuario=findViewById(R.id.tvNombreUsuario)
         tvApellidoUsuario=findViewById(R.id.tvApellidoUsuario)
         tvEmailUsuario=findViewById(R.id.tvEmailUsuario)
@@ -42,6 +65,7 @@ class PerfilActivity:AppCompatActivity() {
         btnAutor=findViewById(R.id.btnAutorMenu)
         btnPrestamo=findViewById(R.id.btnPrestamoMenu)
         btnPerfil=findViewById(R.id.btnPerfilMenu)
+
 
         btnCerrarSesion=findViewById(R.id.btnCerrarSesion)
         btnCerrarSesion.setOnClickListener { cerrarsesion() }
@@ -59,7 +83,10 @@ class PerfilActivity:AppCompatActivity() {
     }
 
     fun cerrarsesion(){
+        UserSessionData.userID=null
         UserSessionData.email=null
+        UserSessionData.apellidos=null
+        UserSessionData.nombres=null
         var intent= Intent(this,MainActivity::class.java)
         startActivity(intent)
     }

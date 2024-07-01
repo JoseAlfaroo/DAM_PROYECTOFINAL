@@ -13,7 +13,7 @@ import com.argus.proyectofinaldami.R
 import com.argus.proyectofinaldami.entidad.Libro
 import com.argus.proyectofinaldami.utils.appConfig
 
-class LibroAdapter(var lista:List<Libro>):RecyclerView.Adapter<ViewLibro>() {
+class LibroHomeAdapter(var lista:List<Libro>):RecyclerView.Adapter<ViewLibro>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewLibro {
         var vista= LayoutInflater.from(parent.context).
         inflate(R.layout.item_libro,parent,false)
@@ -38,7 +38,7 @@ class LibroAdapter(var lista:List<Libro>):RecyclerView.Adapter<ViewLibro>() {
 
 
         holder.itemView.setOnClickListener{
-            var intent=Intent(appConfig.CONTEXTO,LibroUpdateActivity::class.java)
+            var intent=Intent(appConfig.CONTEXTO,LibroDetailActivity::class.java)
             intent.putExtra("libroID",lista.get(position).libroID)
 
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)

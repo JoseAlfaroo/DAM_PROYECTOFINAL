@@ -1,11 +1,14 @@
 package com.argus.proyectofinaldami
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
@@ -40,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var apiUser: ApiServiceUser
     var callbackManager: CallbackManager? = null
     private lateinit var FBLoginBtn:LoginButton
-
+    private var isUserLoggedIn = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,8 +87,21 @@ class MainActivity : AppCompatActivity() {
 
         LoginButton.setOnClickListener{ login() }
         RegisterButton.setOnClickListener{ register() }
-        FBLoginBtn.setOnClickListener{ fblogin() }
 
+        FBLoginBtn.setOnClickListener {
+            if (isUserLoggedIn) {
+                logoutFromFacebook()
+            } else {
+                fblogin()
+            }
+        }
+
+    }
+    private fun logoutFromFacebook() {
+        LoginManager.getInstance().logOut()
+        isUserLoggedIn = false
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
 
@@ -105,15 +121,14 @@ class MainActivity : AppCompatActivity() {
                     Log.d("FBLogin", "Ape obtenido: $ape")
 
                     verificarExistenciaUserEmailFB(email, nom!!, ape!!)
-
-
-
+                    isUserLoggedIn = true
                 } else {
                     Log.d("FBLogin", "No se pudo obtener el email del usuario.")
                 }
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
+
         }
 
         val parameters = Bundle()

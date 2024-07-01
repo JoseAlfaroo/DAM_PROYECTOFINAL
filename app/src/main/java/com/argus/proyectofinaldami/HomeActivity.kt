@@ -3,8 +3,11 @@ package com.argus.proyectofinaldami
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.ViewFlipper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.argus.proyectofinaldami.adaptador.AutorAdapter
 import com.argus.proyectofinaldami.adaptador.LibroAdapter
+import com.argus.proyectofinaldami.adaptador.LibroHomeAdapter
 import com.argus.proyectofinaldami.controller.AutorController
 import com.argus.proyectofinaldami.entidad.Libro
 import com.argus.proyectofinaldami.entidad.UserSessionData
@@ -43,6 +47,7 @@ class HomeActivity:AppCompatActivity() {
     private lateinit var apiLibro: ApiServiceLibro
 
 
+    private lateinit var imgCarruselHome:ViewFlipper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +58,9 @@ class HomeActivity:AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        var images = intArrayOf(R.drawable.libros,R.drawable.librogato1,R.drawable.libros2,R.drawable.librogato2,R.drawable.libros3)
+        imgCarruselHome=findViewById(R.id.imgCarruselHome)
 
 
 
@@ -86,6 +94,24 @@ class HomeActivity:AppCompatActivity() {
         btnAutor.setOnClickListener { irautor() }
         btnPrestamo.setOnClickListener { irprestamo() }
         btnPerfil.setOnClickListener { irperfil() }
+
+        for (image in images) {
+            flipperImages(image)
+        }
+    }
+    fun flipperImages(image:Int){
+
+        val imageView = ImageView(this)
+        imageView.setImageResource(image)
+
+        imgCarruselHome.addView(imageView)
+        imgCarruselHome.flipInterval = 3000
+        imgCarruselHome.isAutoStart = true
+
+        val inAnimation = AnimationUtils.loadAnimation(applicationContext, android.R.anim.slide_in_left)
+        val outAnimation = AnimationUtils.loadAnimation(applicationContext, android.R.anim.slide_out_right)
+        imgCarruselHome.inAnimation = inAnimation
+        imgCarruselHome.outAnimation = outAnimation
     }
 
     fun listarlibros(){
@@ -94,7 +120,7 @@ class HomeActivity:AppCompatActivity() {
             override fun onResponse(call: Call<List<Libro>>, response: Response<List<Libro>>) {
                 if(response.isSuccessful){
                     var data=response.body()
-                    var adaptador= LibroAdapter(data!!)
+                    var adaptador= LibroHomeAdapter(data!!)
                     rvLibroMenu.adapter=adaptador
                     rvLibroMenu.layoutManager=LinearLayoutManager(appConfig.CONTEXTO,LinearLayoutManager.HORIZONTAL,false)
 
