@@ -3,6 +3,7 @@ package com.argus.proyectofinaldami
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
@@ -72,9 +73,15 @@ class GeneroRegisterActivity:AppCompatActivity() {
             return
         }
         bd.child("genero").child(ID!!).setValue(bean).addOnCompleteListener {
-            showAlert("Genero registrado",DialogInterface.OnClickListener { dialog, which ->
-                irgenero()
+            if (it.isSuccessful) {
+                Log.d("GeneroRegister", "Género registrado correctamente")
+                showAlert("Género registrado", DialogInterface.OnClickListener { dialog, which ->
+                    irgenero()
                 })
+            } else {
+                Log.e("GeneroRegister", "Error al registrar el género: ${it.exception?.message}")
+                showAlert("Error al registrar el género: ${it.exception?.message}")
+            }
         }
 
     }
